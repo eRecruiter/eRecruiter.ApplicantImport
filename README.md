@@ -21,7 +21,7 @@ Import applicant profiles from a CSV file into eRecruiter.
 - History entries are not very nice (or missing completely) at the moment.
 
 ## Usage
---config=your_config_file.json --file=your_csv_file.csv [--continueOnWarnings]
+`eRecruiter.ApplicantImport.exe --config=your_config_file.json --file=your_csv_file.csv [--continueOnWarnings]`
 
 ## Configuration file format (JSON)
 
