@@ -1,5 +1,4 @@
-﻿using System.Text;
-using eRecruiter.Api.Client;
+﻿using eRecruiter.Api.Client;
 using eRecruiter.Api.Parameters;
 using eRecruiter.Api.Responses;
 using eRecruiter.Utilities;
