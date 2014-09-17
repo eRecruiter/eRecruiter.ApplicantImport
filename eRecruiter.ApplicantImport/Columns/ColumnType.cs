@@ -10,6 +10,8 @@ namespace eRecruiter.ApplicantImport.Columns
         MobilePhone,
         Street,
         ZipCode,
-        City
+        City,
+        Cv,
+        Photo
     }
 }

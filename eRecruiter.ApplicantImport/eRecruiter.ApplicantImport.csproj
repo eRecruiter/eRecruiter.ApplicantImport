@@ -66,6 +66,8 @@
   <ItemGroup>
     <Compile Include="ApiClientFactory.cs" />
     <Compile Include="Columns\AbstractColumn.cs" />
+    <Compile Include="Columns\PhotoColumn.cs" />
+    <Compile Include="Columns\CvColumn.cs" />
     <Compile Include="Columns\ColumnFactory.cs" />
     <Compile Include="Columns\ColumnType.cs" />
     <Compile Include="Columns\MobilePhoneColumn.cs" />

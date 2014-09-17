@@ -31,7 +31,8 @@ namespace eRecruiter.ApplicantImport
                 var applicantParameter = new ApplicantParameter
                 {
                     FirstName = "First-Name",
-                    LastName = "Last-Name"
+                    LastName = "Last-Name",
+                    IsActive = true
                 };
 
                 try

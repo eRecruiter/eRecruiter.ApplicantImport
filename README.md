@@ -12,6 +12,8 @@ Import applicant profiles from a CSV file into eRecruiter.
 - Street (address): `Street`
 - ZIP code: `ZipCode`
 - City (address): `City`
+- CV: `Cv` - must be empty or a path to an existing file
+- Photo (applicant portrait): `Photo` - must be empty or a path to an existing file
 
 ## Known problems and shortcomings
 
