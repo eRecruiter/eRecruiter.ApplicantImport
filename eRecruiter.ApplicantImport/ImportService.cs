@@ -30,8 +30,8 @@ namespace eRecruiter.ApplicantImport
                 Program.Write(string.Format("Importing applicant {0}/{1} ...", ++count, total));
                 var applicantParameter = new ApplicantParameter
                 {
-                    FirstName = "First Name",
-                    LastName = "Last Name"
+                    FirstName = "First-Name",
+                    LastName = "Last-Name"
                 };
 
                 try
