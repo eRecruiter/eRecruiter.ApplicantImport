@@ -6,10 +6,10 @@ namespace eRecruiter.ApplicantImport.Columns
         FirstName,
         LastName,
         Email,
-        /*Phone,
+        Phone,
         MobilePhone,
         Street,
         ZipCode,
-        City*/
+        City
     }
 }

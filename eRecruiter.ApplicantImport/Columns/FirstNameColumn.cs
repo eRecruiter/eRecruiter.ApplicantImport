@@ -20,7 +20,7 @@ namespace eRecruiter.ApplicantImport.Columns
 
         public override void SetValueBeforeCreate(string value, ApplicantParameter applicant)
         {
-            if (value.HasValue()) // only set the first name, if we really have a value (use default value otherwise, because first name must not be empty).
+            if (value.HasValue())
                 applicant.FirstName = value;
         }
     }

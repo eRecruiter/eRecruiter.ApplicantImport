@@ -8,19 +8,17 @@ namespace eRecruiter.ApplicantImport.Columns
         {
             AbstractColumn result;
 
-            switch (type)
+            try
             {
-                case ColumnType.LastName:
-                    result = new LastNameColumn(additionalType, header);
-                    break;
-                case ColumnType.FirstName:
-                    result = new FirstNameColumn(additionalType, header);
-                    break;
-                case ColumnType.Email:
-                    result = new EmailColumn(additionalType, header);
-                    break;
-                default:
-                    throw new ApplicationException("Column type '" + type + "' is not supported.");
+                var columnTypeName = "eRecruiter.ApplicantImport.Columns." + type + "Column";
+                var columnType = Type.GetType(columnTypeName);
+                if (columnType == null)
+                    throw new ApplicationException("Class '" + columnTypeName + "' not found.");
+                result = (AbstractColumn)Activator.CreateInstance(columnType, additionalType, header);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Column type '" + type + "' is not supported: " + ex.Message, ex);
             }
 
             return result;

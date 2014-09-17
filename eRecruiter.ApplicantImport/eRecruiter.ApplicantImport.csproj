@@ -68,6 +68,11 @@
     <Compile Include="Columns\AbstractColumn.cs" />
     <Compile Include="Columns\ColumnFactory.cs" />
     <Compile Include="Columns\ColumnType.cs" />
+    <Compile Include="Columns\MobilePhoneColumn.cs" />
+    <Compile Include="Columns\StreetColumn.cs" />
+    <Compile Include="Columns\CityColumn.cs" />
+    <Compile Include="Columns\ZipCodeColumn.cs" />
+    <Compile Include="Columns\PhoneColumn.cs" />
     <Compile Include="Columns\FirstNameColumn.cs" />
     <Compile Include="Columns\EmailColumn.cs" />
     <Compile Include="Columns\LastNameColumn.cs" />

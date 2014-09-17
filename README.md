@@ -7,6 +7,11 @@ Import applicant profiles from a CSV file into eRecruiter.
 - First name: `FirstName` - must never be empty
 - Last name: `LastName` - must never be empty
 - E-Mail: `Email`
+- Phone: `Phone`
+- Mobile phone: `MobilePhone`
+- Street (address): `Street`
+- ZIP code: `ZipCode`
+- City (address): `City`
 
 ## Known problems and shortcomings
 
