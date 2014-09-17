@@ -1,4 +1,5 @@
-﻿using eRecruiter.Api.Client;
+﻿using System.Linq;
+using eRecruiter.Api.Client;
 using eRecruiter.Api.Client.Requests;
 using eRecruiter.ApplicantImport.Columns;
 using JetBrains.Annotations;
@@ -26,7 +27,10 @@ namespace eRecruiter.ApplicantImport
             try
             {
                 configuration = Newtonsoft.Json.JsonConvert.DeserializeObject<Configuration>(File.ReadAllText(_commandLineArguments.ConfigurationFile));
-                if (configuration == null || configuration.Api == null || configuration.Columns == null)
+                if (configuration == null
+                    || configuration.Api == null
+                    || configuration.Columns == null
+                    || configuration.Columns.Any(x => x == null))
                     throw new ApplicationException("Configuration invalid or missing.");
             }
             catch (Exception ex)

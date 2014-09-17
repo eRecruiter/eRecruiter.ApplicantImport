@@ -39,7 +39,7 @@ namespace eRecruiter.ApplicantImport
                     foreach (var c in _configuration.Columns)
                     {
                         var column = ColumnFactory.GetColumn(c.Type, c.AdditionalType, c.Header);
-                        column.SetValueBeforeCreate(row[c.Header] as string, applicantParameter);
+                        column.SetValueBeforeCreate(row.ContainsKey(c.Header) ? row[c.Header] as string : null, applicantParameter);
                     }
 
                     var applicantResponse = new ApplicantPutRequest(applicantParameter, false, new Uri("http://does_not_matter")).LoadResult(apiClient);
@@ -48,8 +48,10 @@ namespace eRecruiter.ApplicantImport
                     foreach (var c in _configuration.Columns)
                     {
                         var column = ColumnFactory.GetColumn(c.Type, c.AdditionalType, c.Header);
-                        column.SetValueAfterCreate(row[c.Header] as string, applicantResponse, apiClient);
+                        column.SetValueAfterCreate(row.ContainsKey(c.Header) ? row[c.Header] as string : null, applicantResponse, apiClient);
                     }
+
+                    Program.Write("");
                 }
                 catch (Exception ex)
                 {

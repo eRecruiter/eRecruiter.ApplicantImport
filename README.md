@@ -6,11 +6,12 @@ Import applicant profiles from a CSV file into eRecruiter.
 
 - First name: `FirstName` - must never be empty
 - Last name: `LastName` - must never be empty
+- E-Mail: `Email`
 
 ## Known problems and shortcomings
 
 - The applicants creation date cannot be set at the moment. It is always the date/time of import.
-- Every imported applicant looks like he/she applied via applicant portal at the moment (ie. in the history).
+- History entries are not very nice (or missing completely) at the moment.
 
 ## Usage
 --config=your_config_file.json --file=your_csv_file.csv [--continueOnWarnings]

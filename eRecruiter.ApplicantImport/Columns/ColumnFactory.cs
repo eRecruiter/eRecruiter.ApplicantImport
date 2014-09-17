@@ -16,6 +16,9 @@ namespace eRecruiter.ApplicantImport.Columns
                 case ColumnType.FirstName:
                     result = new FirstNameColumn(additionalType, header);
                     break;
+                case ColumnType.Email:
+                    result = new EmailColumn(additionalType, header);
+                    break;
                 default:
                     throw new ApplicationException("Column type '" + type + "' is not supported.");
             }

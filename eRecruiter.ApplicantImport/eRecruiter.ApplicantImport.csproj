@@ -69,6 +69,7 @@
     <Compile Include="Columns\ColumnFactory.cs" />
     <Compile Include="Columns\ColumnType.cs" />
     <Compile Include="Columns\FirstNameColumn.cs" />
+    <Compile Include="Columns\EmailColumn.cs" />
     <Compile Include="Columns\LastNameColumn.cs" />
     <Compile Include="CommandLineArguments.cs" />
     <Compile Include="CommandLineService.cs" />

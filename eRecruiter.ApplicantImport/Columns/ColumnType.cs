@@ -5,8 +5,8 @@ namespace eRecruiter.ApplicantImport.Columns
     {
         FirstName,
         LastName,
-        /*Email,
-        Phone,
+        Email,
+        /*Phone,
         MobilePhone,
         Street,
         ZipCode,
