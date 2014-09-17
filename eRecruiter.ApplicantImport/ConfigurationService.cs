@@ -1,8 +1,9 @@
-﻿using ePunkt.Api.Client.Requests;
+﻿using eRecruiter.Api.Client;
+using eRecruiter.Api.Client.Requests;
+using eRecruiter.ApplicantImport.Columns;
 using JetBrains.Annotations;
 using System;
 using System.IO;
-using System.Linq;
 
 namespace eRecruiter.ApplicantImport
 {
@@ -18,7 +19,6 @@ namespace eRecruiter.ApplicantImport
         [NotNull]
         public Configuration ReadAndVerify(out bool hasErrors, out bool hasWarnings)
         {
-            hasErrors = false;
             hasWarnings = false;
             Configuration configuration;
 
@@ -37,35 +37,18 @@ namespace eRecruiter.ApplicantImport
                 return configuration;
             }
 
-            var errorFunctions = new Func<Configuration, bool>[]
-            {
-                EndpointIsValid,
-                CanReachEndpoint,
-                CanAuthenticateEndpoint
-            };
-            if (errorFunctions.Any(function => !function.Invoke(configuration)))
-            {
-                hasErrors = true;
+            hasErrors = !IsEndpointValid(configuration);
+            if (hasErrors)
                 return configuration;
-            }
 
-            var warningFunctions = new Func<Configuration, bool>[]
-            {
-                LastNameAtLeastOnce,
-                FirstNameAtLeastOnce,
-                ColumnOnlyOnce
-            };
-            if (warningFunctions.Any(function => !function.Invoke(configuration)))
-            {
-                hasWarnings = true;
-            }
-
+            var apiClient = ApiClientFactory.GetClient(configuration);
+            hasWarnings = !IsEntireConfigurationValid(configuration) || !IsEveryColumnValid(configuration, apiClient);
             return configuration;
         }
 
-        #region Error Validation
-        private bool EndpointIsValid(Configuration configuration)
+        private bool IsEndpointValid(Configuration configuration)
         {
+            // endpoint needs to be a valid URL
             try
             {
                 // ReSharper disable once ObjectCreationAsStatement
@@ -73,14 +56,11 @@ namespace eRecruiter.ApplicantImport
             }
             catch
             {
-                Program.WriteError(string.Format("{0} is not a valid endpoint URI.", configuration.Api.Endpoint));
+                Program.WriteError(string.Format("'{0}' is not a valid endpoint URI.", configuration.Api.Endpoint));
                 return false;
             }
-            return true;
-        }
 
-        private bool CanReachEndpoint(Configuration configuration)
-        {
+            // endpoint must respond to ping
             var apiClient = ApiClientFactory.GetClient(configuration);
             try
             {
@@ -91,12 +71,8 @@ namespace eRecruiter.ApplicantImport
                 Program.WriteError("API endpoint not found: " + ex.Message);
                 return false;
             }
-            return true;
-        }
 
-        private bool CanAuthenticateEndpoint(Configuration configuration)
-        {
-            var apiClient = ApiClientFactory.GetClient(configuration);
+            // endpoint must return valid mandator response
             try
             {
                 new MandatorRequest(new Uri("http://does_not_matter")).LoadResult(apiClient);
@@ -106,55 +82,34 @@ namespace eRecruiter.ApplicantImport
                 Program.WriteError("Unable to access API: " + ex.Message);
                 return false;
             }
-            return true;
-        }
-        #endregion
 
-        #region Warning Validation
-
-        public bool ColumnOnlyOnce(Configuration configuration)
-        {
-            var types = new[]
-            {
-                Configuration.Column.ColumnType.LastName,
-                Configuration.Column.ColumnType.FirstName,
-                Configuration.Column.ColumnType.Email,
-                Configuration.Column.ColumnType.Phone,
-                Configuration.Column.ColumnType.MobilePhone,
-                Configuration.Column.ColumnType.Street,
-                Configuration.Column.ColumnType.ZipCode,
-                Configuration.Column.ColumnType.City
-            };
-
-            foreach (var type in types)
-                if (configuration.Columns.Count(x => x.Type == type) > 1)
-                {
-                    Program.WriteWarning("Column for " + type + " specified more than once.");
-                    return false;
-                }
             return true;
         }
 
-        public bool LastNameAtLeastOnce(Configuration configuration)
+        // run once for every configured column
+        private bool IsEveryColumnValid(Configuration configuration, ApiHttpClient apiClient)
         {
-            if (configuration.Columns.Count(x => x.Type == Configuration.Column.ColumnType.LastName) <= 0)
+            var result = true;
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach (var c in configuration.Columns)
             {
-                Program.WriteWarning("Column for LastName not specified at all.");
-                return false;
+                var column = ColumnFactory.GetColumn(c.Type, c.AdditionalType, c.Header);
+                result = column.IsColumnConfigurationValid(apiClient) && result;
             }
-            return true;
+            return result;
         }
 
-        public bool FirstNameAtLeastOnce(Configuration configuration)
+        // run once for every type of column
+        private bool IsEntireConfigurationValid(Configuration configuration)
         {
-            if (configuration.Columns.Count(x => x.Type == Configuration.Column.ColumnType.FirstName) <= 0)
+            var result = true;
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach (ColumnType c in Enum.GetValues(typeof(ColumnType)))
             {
-                Program.WriteWarning("Column for FirstName not specified at all.");
-                return false;
+                var column = ColumnFactory.GetColumn(c, null, null);
+                result = column.IsEntireConfigurationValid(configuration) && result;
             }
-            return true;
+            return result;
         }
-
-        #endregion
     }
 }

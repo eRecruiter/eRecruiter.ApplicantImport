@@ -1,6 +1,6 @@
-﻿using ePunkt.Api.Client;
-using ePunkt.Api.Parameters;
-using System;
+﻿using System;
+using eRecruiter.Api.Client;
+using eRecruiter.Api.Parameters;
 
 namespace eRecruiter.ApplicantImport
 {

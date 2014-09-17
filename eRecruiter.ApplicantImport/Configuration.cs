@@ -1,4 +1,4 @@
-﻿
+﻿using eRecruiter.ApplicantImport.Columns;
 using System.Collections.Generic;
 
 namespace eRecruiter.ApplicantImport
@@ -20,18 +20,6 @@ namespace eRecruiter.ApplicantImport
             public string Header { get; set; }
             public ColumnType Type { get; set; }
             public string AdditionalType { get; set; }
-
-            public enum ColumnType
-            {
-                FirstName,
-                LastName,
-                Email,
-                Phone,
-                MobilePhone,
-                Street,
-                ZipCode,
-                City
-            }
         }
     }
 }

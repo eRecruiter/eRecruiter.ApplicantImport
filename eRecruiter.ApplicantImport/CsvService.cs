@@ -1,5 +1,7 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
+using eRecruiter.Api.Client;
+using eRecruiter.ApplicantImport.Columns;
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
@@ -13,17 +15,18 @@ namespace eRecruiter.ApplicantImport
     {
         private readonly Configuration _configuration;
         private readonly CommandLineArguments _commandLineArguments;
+        private readonly ApiHttpClient _apiClient;
 
         public CsvService([NotNull] CommandLineArguments commandLineArguments, [NotNull] Configuration configuration)
         {
             _commandLineArguments = commandLineArguments;
             _configuration = configuration;
+            _apiClient = ApiClientFactory.GetClient(configuration);
         }
 
         [CanBeNull]
-        public Csv ReadAndVerify(out bool hasError, out bool hasWarnings)
+        public Csv ReadAndVerify(out bool hasErrors, out bool hasWarnings)
         {
-            hasError = false;
             hasWarnings = false;
 
             // read the csv file
@@ -49,44 +52,28 @@ namespace eRecruiter.ApplicantImport
             catch (Exception ex)
             {
                 Program.WriteError("Unable to read CSV: " + ex.Message);
-                hasError = true;
+                hasErrors = true;
                 return null;
             }
 
-            var errorFunctions = new Func<Csv, bool>[]
-            {
-            };
-            if (errorFunctions.Any(function => !function.Invoke(csv)))
-            {
-                hasError = true;
+
+            hasErrors = !IsCsvValid(csv);
+            if (hasErrors)
                 return csv;
-            }
 
-            var warningFunctions = new Func<Csv, bool>[]
-            {
-                HasAtLeastTwoColumns,
-                HasRecords
-            };
-            if (warningFunctions.Any(function => !function.Invoke(csv)))
-            {
-                hasWarnings = true;
-            }
-
+            hasWarnings = !AreValuesValid(csv);
             return csv;
         }
 
-        private bool HasRecords(Csv csv)
+        private bool IsCsvValid(Csv csv)
         {
             if (!csv.Values.Any())
             {
                 Program.WriteWarning("No applicants found.");
                 return false;
             }
-            return true;
-        }
 
-        private bool HasAtLeastTwoColumns(Csv csv)
-        {
+
             if (csv.Headers.Count() <= 1)
             {
                 Program.WriteWarning("Less than two columns.");
@@ -95,5 +82,18 @@ namespace eRecruiter.ApplicantImport
             return true;
         }
 
+        private bool AreValuesValid(Csv csv)
+        {
+            var result = true;
+            foreach (var row in csv.Values)
+            {
+                foreach (var c in _configuration.Columns)
+                {
+                    var column = ColumnFactory.GetColumn(c.Type, c.AdditionalType, c.Header);
+                    result = column.IsValueValid(row[c.Header] as string, _apiClient) && result;
+                }
+            }
+            return result;
+        }
     }
 }

@@ -1,9 +1,8 @@
-﻿using ePunkt.Api.Client.Requests;
-using ePunkt.Api.Parameters;
+﻿using eRecruiter.Api.Client.Requests;
+using eRecruiter.Api.Parameters;
+using eRecruiter.ApplicantImport.Columns;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace eRecruiter.ApplicantImport
 {
@@ -29,11 +28,28 @@ namespace eRecruiter.ApplicantImport
             foreach (var row in _csv.Values)
             {
                 Program.Write(string.Format("Importing applicant {0}/{1} ...", ++count, total));
+                var applicantParameter = new ApplicantParameter
+                {
+                    FirstName = "First Name",
+                    LastName = "Last Name"
+                };
 
                 try
                 {
-                    var applicantRequest = BuildApplicant(row);
-                    new ApplicantPutRequest(applicantRequest, false, new Uri("http://does_not_matter")).LoadResult(apiClient);
+                    foreach (var c in _configuration.Columns)
+                    {
+                        var column = ColumnFactory.GetColumn(c.Type, c.AdditionalType, c.Header);
+                        column.SetValueBeforeCreate(row[c.Header] as string, applicantParameter);
+                    }
+
+                    var applicantResponse = new ApplicantPutRequest(applicantParameter, false, new Uri("http://does_not_matter")).LoadResult(apiClient);
+                    Program.Write(string.Format("Applicant '#{0} {1} {2}' created. Setting additional attributes ...", applicantResponse.Id, applicantResponse.FirstName, applicantResponse.LastName));
+
+                    foreach (var c in _configuration.Columns)
+                    {
+                        var column = ColumnFactory.GetColumn(c.Type, c.AdditionalType, c.Header);
+                        column.SetValueAfterCreate(row[c.Header] as string, applicantResponse, apiClient);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -42,40 +58,6 @@ namespace eRecruiter.ApplicantImport
                     return;
                 }
             }
-        }
-
-        [NotNull]
-        private ApplicantParameter BuildApplicant(IDictionary<string, object> row)
-        {
-            var applicant = new ApplicantParameter
-            {
-                FirstName = "First Name",
-                LastName = "Last Name"
-            };
-
-            applicant.FirstName = FindValue(row, Configuration.Column.ColumnType.FirstName);
-            applicant.LastName = FindValue(row, Configuration.Column.ColumnType.LastName);
-            applicant.Email = FindValue(row, Configuration.Column.ColumnType.Email);
-            applicant.Phone = FindValue(row, Configuration.Column.ColumnType.Phone);
-            applicant.MobilePhone = FindValue(row, Configuration.Column.ColumnType.MobilePhone);
-            applicant.Street = FindValue(row, Configuration.Column.ColumnType.Street);
-            applicant.ZipCode = FindValue(row, Configuration.Column.ColumnType.ZipCode);
-            applicant.City = FindValue(row, Configuration.Column.ColumnType.City);
-
-            return applicant;
-        }
-
-        [CanBeNull]
-        private string FindValue(IDictionary<string, object> row, Configuration.Column.ColumnType type)
-        {
-            var column = _configuration.Columns.FirstOrDefault(x => x.Type == Configuration.Column.ColumnType.FirstName);
-            if (column != null)
-            {
-                var value = row.ContainsKey(column.Header) ? row[column.Header] : null;
-                if (value != null)
-                    return value.ToString();
-            }
-            return null;
         }
     }
 }
