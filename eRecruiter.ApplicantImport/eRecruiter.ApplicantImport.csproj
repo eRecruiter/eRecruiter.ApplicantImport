@@ -66,6 +66,8 @@
   <ItemGroup>
     <Compile Include="ApiClientFactory.cs" />
     <Compile Include="Columns\AbstractColumn.cs" />
+    <Compile Include="Columns\IdColumn.cs" />
+    <Compile Include="Columns\RegionColumn.cs" />
     <Compile Include="Columns\JobProfileColumn.cs" />
     <Compile Include="Columns\DocumentColumn.cs" />
     <Compile Include="Columns\GenderColumn.cs" />

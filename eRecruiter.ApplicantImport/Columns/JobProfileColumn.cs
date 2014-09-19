@@ -15,7 +15,7 @@ namespace eRecruiter.ApplicantImport.Columns
 
         public override bool IsValueValid(string value, ApiHttpClient apiClient)
         {
-            if (value != null && value.HasValue() && !IsJobProfileAvailable(value, apiClient))
+            if (value.HasValue() && !IsJobProfileAvailable(value, apiClient))
             {
                 Program.WriteWarning("There is no job profile '" + value + "'.");
                 return false;
