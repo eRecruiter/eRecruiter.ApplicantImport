@@ -1,0 +1,12 @@
+version: 1.0.0.{build}
+
+configuration: Release
+
+build:
+  project: eRecruiter.ApplicantImport.sln
+
+before_build:
+  - nuget restore
+  
+artifacts:
+  - path: eRecruiter.ApplicantImport\bin\Release
