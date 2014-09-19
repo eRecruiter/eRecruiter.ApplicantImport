@@ -43,47 +43,8 @@ This project builds automatically on every commit using AppVeyor. You can downlo
 `eRecruiter.ApplicantImport.exe --config=your_config_file.json --file=your_csv_file.csv [--continueOnWarnings]`
 
 ## Configuration file format (JSON)
-
-```
-{
-	Api: {
-		Endpoint: "https://your_api_endpoint",
-		MandatorId: your_mandator_id,
-		Key: "your_api_key"
-	},
-	
-	Columns: [
-		{
-			Header: "Vorname",
-			Type: "FirstName"
-		},
-		{
-			Header: "Nachname",
-			Type: "LastName"
-		},
-		{
-			Header: "Lebenslauf",
-			Type: "CV"
-		},
-		{
-			Header: "Zeugnisse",
-			Type: "Document",
-			SubType: "Zeugnis"
-		},
-		{
-			Header: "Einstiegsdatum",
-			Type: "BeginDate",
-			DateFormat: "dd.MM.yyyy"
-		}
-	]	
-}
-```
+For an example JSON configuration file that contains all supported applicant attributes, see [example-configuration.json]
 
 ## CSV file format
-Use UTF8 and TAB-seperated CSV.
+Use UTF8 encoding and TAB-separated CSV. See [example-data.csv] for an example CSV file.
 
-```
-Vorname	Nachname	Lebenslauf	Zeugnisse	Einstiegsdatum
-Hannes	Sachsenhofer	c:\lebenslauf_sachsenhofer.pdf	c:\zeugnisse\sachsenhofer	30.08.2015
-Michael	Mittermair		c:\zeugnisse\mittermair
-```

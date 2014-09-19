@@ -1,0 +1,93 @@
+{
+	Api: {
+		Endpoint: "< your_API_endpoint >",
+		MandatorId: < your_mandator_ID,
+		Key: "< your_API_key"
+	},
+	
+	Columns: [
+		{
+			Header: "#",
+			Type: "Id"
+		},
+		{
+			Header: "Geschlecht",
+			Type: "Gender"
+		},
+		{
+			Header: "Vorname",
+			Type: "FirstName"
+		},
+		{
+			Header: "Nachname",
+			Type: "LastName"
+		},
+		{
+			Header: "Titel",
+			Type: "Title"
+		},
+		{
+			Header: "E-Mail",
+			Type: "Email"
+		},
+		{
+			Header: "Telefon",
+			Type: "Phone"
+		}		,
+		{
+			Header: "Handy",
+			Type: "MobilePhone"
+		},
+		{
+			Header: "Straße",
+			Type: "Street"
+		},
+		{
+			Header: "PLZ",
+			Type: "ZipCode"
+		},
+		{
+			Header: "Ort",
+			Type: "City"
+		},
+		{
+			Header: "Lebenslauf",
+			Type: "Cv"
+		},
+		{
+			Header: "Foto",
+			Type: "Photo"
+		},
+		{
+			Header: "Zeugnisse",
+			Type: "Document",
+			SubType: "Zeugnis"
+		},
+		{
+			Header: "Anschreiben",
+			Type: "Document",
+			SubType: "Anschreiben"
+		},
+		{
+			Header: "Berufsprofil 1",
+			Type: "JobProfile"
+		},
+		{
+			Header: "Berufsprofil 2",
+			Type: "JobProfile"
+		},
+		{
+			Header: "Dienstregion 1",
+			Type: "Region"
+		},
+		{
+			Header: "Dienstregion 2",
+			Type: "Region"
+		},
+		{
+			Header: "Einstiegsdatum",
+			Type: "BeginDate",
+			DateFormat: "dd.MM.yyyy"
+		}
+	]	
+}
