@@ -10,3 +10,4 @@ before_build:
   
 artifacts:
   - path: eRecruiter.ApplicantImport\bin\Release
+    name: eRecruiter.ApplicantImport
