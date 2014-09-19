@@ -1,4 +1,5 @@
-﻿using eRecruiter.Api.Parameters;
+﻿using eRecruiter.Api.Client;
+using eRecruiter.Api.Parameters;
 using eRecruiter.Utilities;
 
 namespace eRecruiter.ApplicantImport.Columns
@@ -12,7 +13,7 @@ namespace eRecruiter.ApplicantImport.Columns
             return !HasColumnMoreThanOnce(configuration);
         }
 
-        public override void SetValueBeforeCreate(string value, ApplicantParameter applicant)
+        public override void SetValueBeforeCreate(string value, ApplicantParameter applicant, ApiHttpClient apiClient)
         {
             if (value.HasValue())
                 applicant.Street = value;

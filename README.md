@@ -16,6 +16,7 @@ Import applicant profiles from a CSV file into eRecruiter.
 - CV: `Cv` - must be empty or a path to an existing file
 - Photo (applicant portrait): `Photo` - must be empty or a path to an existing file
 - Document: `Document` - must be empty or a path to an existing file (to import single file) or directory (to import all files in directory). Also, configuration for `AdditionalType` is required to specify the applicant document type.
+- Job profile: `JobProfile`
 
 ## Known problems and shortcomings
 

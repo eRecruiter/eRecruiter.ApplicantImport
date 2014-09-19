@@ -36,7 +36,7 @@ namespace eRecruiter.ApplicantImport.Columns
             return true;
         }
 
-        public virtual void SetValueBeforeCreate([CanBeNull] string value, [NotNull] ApplicantParameter applicant)
+        public virtual void SetValueBeforeCreate([CanBeNull] string value, [NotNull] ApplicantParameter applicant, [NotNull] ApiHttpClient apiClient)
         {
         }
 

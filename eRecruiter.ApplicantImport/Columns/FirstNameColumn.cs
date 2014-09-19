@@ -18,7 +18,7 @@ namespace eRecruiter.ApplicantImport.Columns
             return HasValue(value);
         }
 
-        public override void SetValueBeforeCreate(string value, ApplicantParameter applicant)
+        public override void SetValueBeforeCreate(string value, ApplicantParameter applicant, ApiHttpClient apiClient)
         {
             if (value.HasValue())
                 applicant.FirstName = value;

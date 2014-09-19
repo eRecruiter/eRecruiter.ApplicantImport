@@ -40,7 +40,7 @@ namespace eRecruiter.ApplicantImport
                     foreach (var c in _configuration.Columns)
                     {
                         var column = ColumnFactory.GetColumn(c.Type, c.AdditionalType, c.Header);
-                        column.SetValueBeforeCreate(row.ContainsKey(c.Header) ? row[c.Header] as string : null, applicantParameter);
+                        column.SetValueBeforeCreate(row.ContainsKey(c.Header) ? row[c.Header] as string : null, applicantParameter, apiClient);
                     }
 
                     var applicantResponse = new ApplicantPutRequest(applicantParameter, false, new Uri("http://does_not_matter")).LoadResult(apiClient);

@@ -23,7 +23,7 @@ namespace eRecruiter.ApplicantImport.Columns
             return value.IsNoE() || IsValidValue(value, _maleValues.Concat(_femaleValues));
         }
 
-        public override void SetValueBeforeCreate(string value, ApplicantParameter applicant)
+        public override void SetValueBeforeCreate(string value, ApplicantParameter applicant, ApiHttpClient apiClient)
         {
             if (value.HasValue())
             {
