@@ -13,6 +13,8 @@ namespace eRecruiter.ApplicantImport.Columns
         City,
         Cv,
         Photo,
-        Document
+        Document,
+        /* CustomField, not possible yet, because there's no API method to get available custom fields at the moment */
+        Gender
     }
 }

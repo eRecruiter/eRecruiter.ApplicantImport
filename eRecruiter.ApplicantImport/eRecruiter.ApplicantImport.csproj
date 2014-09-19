@@ -67,6 +67,7 @@
     <Compile Include="ApiClientFactory.cs" />
     <Compile Include="Columns\AbstractColumn.cs" />
     <Compile Include="Columns\DocumentColumn.cs" />
+    <Compile Include="Columns\GenderColumn.cs" />
     <Compile Include="Columns\PhotoColumn.cs" />
     <Compile Include="Columns\CvColumn.cs" />
     <Compile Include="Columns\ColumnFactory.cs" />

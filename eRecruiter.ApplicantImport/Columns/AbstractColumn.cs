@@ -1,4 +1,5 @@
-﻿using eRecruiter.Api.Client;
+﻿using System.Collections.Generic;
+using eRecruiter.Api.Client;
 using eRecruiter.Api.Parameters;
 using eRecruiter.Api.Responses;
 using eRecruiter.Utilities;
@@ -70,6 +71,18 @@ namespace eRecruiter.ApplicantImport.Columns
                 Program.WriteWarning("Empty value in column '" + Header + "' of type '" + Type + "' not allowed.");
                 return false;
             }
+            return true;
+        }
+
+        protected bool IsValidValue(string value, IEnumerable<string> allowedValues)
+        {
+            // ReSharper disable PossibleMultipleEnumeration
+            if (!allowedValues.Any(x => x.Is(value)))
+            {
+                Program.WriteWarning("'" + value + "' is not a valid value for '" + Header + "'. Allowed values are '" + string.Join(" ", allowedValues) + "'.");
+                return false;
+            }
+            // ReSharper restore PossibleMultipleEnumeration
             return true;
         }
     }
