@@ -15,11 +15,12 @@ Import applicant profiles from a CSV file into eRecruiter.
 - **City (address):** `City`
 - **CV:** `Cv` - must be empty or a path to an existing file
 - **Photo** (applicant portrait): `Photo` - must be empty or a path to an existing file
-- **Document:** `Document` - must be empty or a path to an existing file (to import single file) or directory (to import all files in directory). Also, configuration for `AdditionalType` is required to specify the applicant document type.
+- **Document:** `Document` - must be empty or a path to an existing file (to import single file) or directory (to import all files in directory). Also, configuration for `SubType` is required to specify the applicant document type.
 - **Job profile:** `JobProfile`
 - **Region:** `Region`
 - **Applicant #:** `Id` - this is actually a "magic column". If it is specified (and contains a valid applicant #), existing applicants will be updated instead of newly created. This is very handy if you want to bulk-add information to already existing applicants.
 - **Title:** `Title` - based on the mandator settings "title before name" or "title after name" is automatically set correctly.
+- **Earliest possible begin date:** `BeginDate` - use `DateFormat` to specify the date format, default is `yyyy-MM-dd`.
 
 ## Known problems and shortcomings
 
@@ -61,7 +62,12 @@ Import applicant profiles from a CSV file into eRecruiter.
 		{
 			Header: "Zeugnisse",
 			Type: "Document",
-			AdditionalType: "Zeugnis"
+			SubType: "Zeugnis"
+		},
+		{
+			Header: "Einstiegsdatum",
+			Type: "BeginDate",
+			DateFormat: "dd.MM.yyyy"
 		}
 	]	
 }
@@ -71,7 +77,7 @@ Import applicant profiles from a CSV file into eRecruiter.
 Use UTF8 and TAB-seperated CSV.
 
 ```
-Vorname	Nachname	Lebenslauf	Zeugnisse
-Hannes	Sachsenhofer	c:\lebenslauf_sachsenhofer.pdf	c:\zeugnisse\sachsenhofer
+Vorname	Nachname	Lebenslauf	Zeugnisse	Einstiegsdatum
+Hannes	Sachsenhofer	c:\lebenslauf_sachsenhofer.pdf	c:\zeugnisse\sachsenhofer	30.08.2015
 Michael	Mittermair		c:\zeugnisse\mittermair
 ```

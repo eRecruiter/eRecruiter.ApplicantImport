@@ -6,7 +6,7 @@ namespace eRecruiter.ApplicantImport.Columns
 {
     public class LastNameColumn : AbstractColumn
     {
-        public LastNameColumn(string additionalType, string header) : base(ColumnType.LastName, additionalType, header) { }
+        public LastNameColumn(string header) : base(ColumnType.LastName, header) { }
 
         public override bool IsEntireConfigurationValid(Configuration configuration)
         {

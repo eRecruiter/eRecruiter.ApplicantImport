@@ -57,7 +57,7 @@ namespace eRecruiter.ApplicantImport
                 {
                     foreach (var c in _configuration.Columns)
                     {
-                        var column = ColumnFactory.GetColumn(c.Type, c.AdditionalType, c.Header);
+                        var column = ColumnFactory.GetColumn(c);
                         column.SetValueBeforeCreate(row.ContainsKey(c.Header) ? row[c.Header] as string : null, applicantParameter, apiClient);
                     }
 
@@ -74,7 +74,7 @@ namespace eRecruiter.ApplicantImport
 
                     foreach (var c in _configuration.Columns)
                     {
-                        var column = ColumnFactory.GetColumn(c.Type, c.AdditionalType, c.Header);
+                        var column = ColumnFactory.GetColumn(c);
                         column.SetValueAfterCreate(row.ContainsKey(c.Header) ? row[c.Header] as string : null, applicantResponse, apiClient);
                     }
 

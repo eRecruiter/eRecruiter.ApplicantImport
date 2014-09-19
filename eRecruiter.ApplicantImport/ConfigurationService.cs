@@ -97,7 +97,7 @@ namespace eRecruiter.ApplicantImport
             // ReSharper disable once LoopCanBeConvertedToQuery
             foreach (var c in configuration.Columns)
             {
-                var column = ColumnFactory.GetColumn(c.Type, c.AdditionalType, c.Header);
+                var column = ColumnFactory.GetColumn(c);
                 result = column.IsColumnConfigurationValid(apiClient) && result;
             }
             return result;
@@ -110,7 +110,7 @@ namespace eRecruiter.ApplicantImport
             // ReSharper disable once LoopCanBeConvertedToQuery
             foreach (ColumnType c in Enum.GetValues(typeof(ColumnType)))
             {
-                var column = ColumnFactory.GetColumn(c, null, null);
+                var column = ColumnFactory.GetColumn(new Configuration.Column { Header = "Some_Header", Type = c });
                 result = column.IsEntireConfigurationValid(configuration) && result;
             }
             return result;

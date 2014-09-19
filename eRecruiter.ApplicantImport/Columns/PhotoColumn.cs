@@ -10,7 +10,7 @@ namespace eRecruiter.ApplicantImport.Columns
 {
     public class PhotoColumn : AbstractColumn
     {
-        public PhotoColumn(string additionalType, string header) : base(ColumnType.Photo, additionalType, header) { }
+        public PhotoColumn(string header) : base(ColumnType.Photo, header) { }
 
         public override bool IsEntireConfigurationValid(Configuration configuration)
         {

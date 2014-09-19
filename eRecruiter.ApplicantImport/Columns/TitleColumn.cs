@@ -11,7 +11,7 @@ namespace eRecruiter.ApplicantImport.Columns
 {
     public class TitleColumn : AbstractColumn
     {
-        public TitleColumn(string additionalType, string header) : base(ColumnType.Title, additionalType, header) { }
+        public TitleColumn(string header) : base(ColumnType.Title, header) { }
 
         public override bool IsValueValid(string value, ApiHttpClient apiClient)
         {

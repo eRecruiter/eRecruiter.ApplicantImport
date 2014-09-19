@@ -18,6 +18,7 @@ namespace eRecruiter.ApplicantImport.Columns
         JobProfile,
         Region,
         Id,
-        Title
+        Title,
+        BeginDate
     }
 }

@@ -17,9 +17,10 @@ namespace eRecruiter.ApplicantImport
 
         public class Column
         {
-            public string Header { get; set; }
             public ColumnType Type { get; set; }
-            public string AdditionalType { get; set; }
+            public string SubType { get; set; }
+            public string Header { get; set; }
+            public string DateFormat { get; set; }
         }
     }
 }

@@ -11,19 +11,19 @@ namespace eRecruiter.ApplicantImport.Columns
 {
     public class DocumentColumn : AbstractColumn
     {
-        public DocumentColumn(string additionalType, string header) : base(ColumnType.Document, additionalType, header) { }
+        public DocumentColumn(string header) : base(ColumnType.Document, header) { }
 
         public override bool IsColumnConfigurationValid(ApiHttpClient apiClient)
         {
-            if (AdditionalType.IsNoE())
+            if (SubType.IsNoE())
             {
-                Program.WriteWarning("No additional type specified for column '" + Header + "'.");
+                Program.WriteWarning("No subtype specified for column '" + Header + "'.");
                 return false;
             }
 
             if (!IsDocumentTypeAvailable(apiClient))
             {
-                Program.WriteWarning("There is no document type '" + AdditionalType + "'.");
+                Program.WriteWarning("There is no document type '" + SubType + "'.");
                 return false;
             }
 
@@ -64,7 +64,7 @@ namespace eRecruiter.ApplicantImport.Columns
                     Content = bytes,
                     Name = Path.GetFileName(filePath),
                     FileExtension = Path.GetExtension(filePath),
-                    Type = AdditionalType
+                    Type = SubType
                 }).LoadResult(apiClient);
             }
         }
@@ -74,7 +74,7 @@ namespace eRecruiter.ApplicantImport.Columns
         private bool IsDocumentTypeAvailable(ApiHttpClient apiClient)
         {
             _mandator = _mandator ?? new MandatorRequest(new Uri("http://does_not_matter")).LoadResult(apiClient);
-            return _mandator.ApplicantDocumentTypes.Any(x => x.Is(AdditionalType));
+            return _mandator.ApplicantDocumentTypes.Any(x => x.Is(SubType));
         }
     }
 }

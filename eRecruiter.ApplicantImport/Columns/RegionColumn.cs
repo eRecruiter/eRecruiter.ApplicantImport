@@ -11,7 +11,7 @@ namespace eRecruiter.ApplicantImport.Columns
 {
     public class RegionColumn : AbstractColumn
     {
-        public RegionColumn(string additionalType, string header) : base(ColumnType.JobProfile, additionalType, header)
+        public RegionColumn(string header) : base(ColumnType.JobProfile, header)
         {
         }
 

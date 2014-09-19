@@ -6,7 +6,7 @@ namespace eRecruiter.ApplicantImport.Columns
 {
     public class IdColumn : AbstractColumn
     {
-        public IdColumn(string additionalType, string header) : base(ColumnType.FirstName, additionalType, header)
+        public IdColumn(string header) : base(ColumnType.FirstName, header)
         {
         }
 

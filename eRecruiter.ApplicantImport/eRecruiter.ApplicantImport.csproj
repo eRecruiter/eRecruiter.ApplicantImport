@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="ApiClientFactory.cs" />
     <Compile Include="Columns\AbstractColumn.cs" />
+    <Compile Include="Columns\BeginDateColumn.cs" />
     <Compile Include="Columns\IdColumn.cs" />
     <Compile Include="Columns\TitleColumn.cs" />
     <Compile Include="Columns\RegionColumn.cs" />

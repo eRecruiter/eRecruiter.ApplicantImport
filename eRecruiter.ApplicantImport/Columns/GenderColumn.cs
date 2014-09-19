@@ -11,7 +11,7 @@ namespace eRecruiter.ApplicantImport.Columns
         private readonly string[] _maleValues = { "H", "M", "Herr", "Mr." };
         private readonly string[] _femaleValues = { "F", "W", "Frau", "Ms.", "Mrs." };
 
-        public GenderColumn(string additionalType, string header) : base(ColumnType.Gender, additionalType, header) { }
+        public GenderColumn(string header) : base(ColumnType.Gender, header) { }
 
         public override bool IsEntireConfigurationValid(Configuration configuration)
         {

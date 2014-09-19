@@ -6,7 +6,7 @@ namespace eRecruiter.ApplicantImport.Columns
 {
     public class ZipCodeColumn : AbstractColumn
     {
-        public ZipCodeColumn(string additionalType, string header) : base(ColumnType.ZipCode, additionalType, header) { }
+        public ZipCodeColumn(string header) : base(ColumnType.ZipCode, header) { }
 
         public override bool IsEntireConfigurationValid(Configuration configuration)
         {

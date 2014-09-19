@@ -10,16 +10,16 @@ namespace eRecruiter.ApplicantImport.Columns
 {
     public abstract class AbstractColumn
     {
-        protected AbstractColumn(ColumnType type, string additionalType, string header)
+        protected AbstractColumn(ColumnType type, string header)
         {
             Type = type;
             Header = header;
-            AdditionalType = additionalType;
         }
 
         public ColumnType Type { get; set; }
-        public string AdditionalType { get; set; }
+        public string SubType { get; set; }
         public string Header { get; set; }
+        public string DateFormat { get; set; }
 
         public virtual bool IsEntireConfigurationValid([NotNull] Configuration configuration)
         {

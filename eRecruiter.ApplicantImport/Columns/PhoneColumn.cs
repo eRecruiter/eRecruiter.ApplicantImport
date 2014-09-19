@@ -6,7 +6,7 @@ namespace eRecruiter.ApplicantImport.Columns
 {
     public class PhoneColumn : AbstractColumn
     {
-        public PhoneColumn(string additionalType, string header) : base(ColumnType.Phone, additionalType, header) { }
+        public PhoneColumn(string header) : base(ColumnType.Phone, header) { }
 
         public override bool IsEntireConfigurationValid(Configuration configuration)
         {

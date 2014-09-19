@@ -6,7 +6,7 @@ namespace eRecruiter.ApplicantImport.Columns
 {
     public class StreetColumn : AbstractColumn
     {
-        public StreetColumn(string additionalType, string header) : base(ColumnType.Street, additionalType, header) { }
+        public StreetColumn(string header) : base(ColumnType.Street, header) { }
 
         public override bool IsEntireConfigurationValid(Configuration configuration)
         {

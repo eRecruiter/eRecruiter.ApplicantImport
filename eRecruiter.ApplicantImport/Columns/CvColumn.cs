@@ -10,7 +10,7 @@ namespace eRecruiter.ApplicantImport.Columns
 {
     public class CvColumn : AbstractColumn
     {
-        public CvColumn(string additionalType, string header) : base(ColumnType.Cv, additionalType, header) { }
+        public CvColumn(string header) : base(ColumnType.Cv, header) { }
 
         public override bool IsEntireConfigurationValid(Configuration configuration)
         {

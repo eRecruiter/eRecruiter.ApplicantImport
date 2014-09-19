@@ -89,7 +89,7 @@ namespace eRecruiter.ApplicantImport
             {
                 foreach (var c in _configuration.Columns)
                 {
-                    var column = ColumnFactory.GetColumn(c.Type, c.AdditionalType, c.Header);
+                    var column = ColumnFactory.GetColumn(c);
                     result = column.IsValueValid(row.ContainsKey(c.Header) ? row[c.Header] as string : null, _apiClient) && result;
                 }
             }
