@@ -42,9 +42,11 @@ This project builds automatically on every commit using AppVeyor. You can downlo
 ## Usage
 `eRecruiter.ApplicantImport.exe --config=your_config_file.json --file=your_csv_file.csv [--continueOnWarnings]`
 
-## Configuration file format (JSON)
-For an example JSON configuration file that contains all supported applicant attributes, see [example-configuration.json]
+You'll need to specify a configuration file (contains API and column configuration) and a CSV file (contains the actual data to import).
 
-## CSV file format
-Use UTF8 encoding and TAB-separated CSV. See [example-data.csv] for an example CSV file.
+### Configuration file
+For an example JSON configuration file that contains all supported applicant attributes, see [example-configuration.json](example-configuration.json)
+
+### CSV file
+Use UTF8 encoding and TAB-separated CSV. See [example-data.csv](example-data.csv) for an example CSV file.
 
