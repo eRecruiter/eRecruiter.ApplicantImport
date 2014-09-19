@@ -6,7 +6,7 @@ Import applicant profiles from a CSV file into eRecruiter.
 
 This project builds automatically on every commit using AppVeyor:
 
-[![Build status](https://ci.appveyor.com/api/projects/status/la78wve86cn6p6qj)](https://ci.appveyor.com/project/saxx/erecruiter-applicantimport)
+[![Build status](https://ci.appveyor.com/api/projects/status/2rn1eok9hfjnrlcr)](https://ci.appveyor.com/project/saxx/erecruiter-applicantimport)
 
 ## Supported applicant attributes
 
