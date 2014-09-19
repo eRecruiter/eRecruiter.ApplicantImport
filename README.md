@@ -1,18 +1,20 @@
 # eRecruiter.ApplicantImport
 
-Import applicant profiles from a CSV file into eRecruiter.
+Import applicant profiles from a CSV file into eRecruiter. You'll need an up-and-running eRecruiter API endpoint (version >= 1.37) and the respective API key.
 
-## Latest build
+## Download
 
-This project builds automatically on every commit using AppVeyor. You can download the latest build here: https://ci.appveyor.com/project/saxx/erecruiter-applicantimport/build/artifacts
+This nifty little tool builds automatically on every commit on GitHub using AppVeyor. You can download the latest build here: https://ci.appveyor.com/project/saxx/erecruiter-applicantimport/build/artifacts
 
 [![Build status](https://ci.appveyor.com/api/projects/status/2rn1eok9hfjnrlcr)](https://ci.appveyor.com/project/saxx/erecruiter-applicantimport)
 
 ## Supported applicant attributes
+Each applicant attribute corresponds to a column in your CSV file. At the moment, these attributes are supported:
 
+- **Gender:** `Gender`
 - **First name:** `FirstName` - must never be empty
 - **Last name:** `LastName` - must never be empty
-- **Gender:** `Gender`
+- **Title:** `Title` - based on the mandator settings "title before name" or "title after name" is automatically set correctly.
 - **E-Mail:** `Email`
 - **Phone:** `Phone`
 - **Mobile phone:** `MobilePhone`
@@ -24,9 +26,8 @@ This project builds automatically on every commit using AppVeyor. You can downlo
 - **Document:** `Document` - must be empty or a path to an existing file (to import single file) or directory (to import all files in directory). Also, configuration for `SubType` is required to specify the applicant document type.
 - **Job profile:** `JobProfile`
 - **Region:** `Region`
-- **Applicant #:** `Id` - this is actually a "magic column". If it is specified (and contains a valid applicant #), existing applicants will be updated instead of newly created. This is very handy if you want to bulk-add information to already existing applicants.
-- **Title:** `Title` - based on the mandator settings "title before name" or "title after name" is automatically set correctly.
 - **Earliest possible begin date:** `BeginDate` - use `DateFormat` to specify the date format, default is `yyyy-MM-dd`.
+- **Applicant #:** `Id` - this is actually a "magic column". If it is specified (and contains a valid applicant #), existing applicants will be updated instead of newly created. This is very handy if you want to bulk-add information to already existing applicants.
 
 ## Known problems and shortcomings
 
