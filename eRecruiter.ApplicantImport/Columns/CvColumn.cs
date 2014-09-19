@@ -44,7 +44,7 @@ namespace eRecruiter.ApplicantImport.Columns
                 new ApplicantCvPutRequest(applicant.Id, new ApplicantDocumentParameter
                 {
                     Content = bytes,
-                    Name = value,
+                    Name = Path.GetFileName(value),
                     FileExtension = Path.GetExtension(value)
                 }).LoadResult(apiClient);
             }

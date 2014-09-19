@@ -14,6 +14,7 @@ Import applicant profiles from a CSV file into eRecruiter.
 - City (address): `City`
 - CV: `Cv` - must be empty or a path to an existing file
 - Photo (applicant portrait): `Photo` - must be empty or a path to an existing file
+- Document (applicant document): `Document` - must be empty or a path to an existing file (to import single file) or directory (to import all files in directory). Also, configuration for `AdditionalType` is required to specify the applicant document type.
 
 ## Known problems and shortcomings
 
@@ -41,6 +42,15 @@ Import applicant profiles from a CSV file into eRecruiter.
 		{
 			Header: "Nachname",
 			Type: "LastName"
+		},
+		{
+			Header: "Lebenslauf",
+			Type: "CV"
+		},
+		{
+			Header: "Zeugnisse",
+			Type: "Document",
+			AdditionalType: "Zeugnis"
 		}
 	]	
 }
@@ -50,7 +60,7 @@ Import applicant profiles from a CSV file into eRecruiter.
 Use UTF8 and TAB-seperated CSV.
 
 ```
-Vorname	Nachname
-Hannes	Sachsenhofer
-Michael	Mittermair
+Vorname	Nachname	Lebenslauf	Zeugnisse
+Hannes	Sachsenhofer	c:\lebenslauf_sachsenhofer.pdf	c:\zeugnisse\sachsenhofer
+Michael	Mittermair		c:\zeugnisse\mittermair
 ```

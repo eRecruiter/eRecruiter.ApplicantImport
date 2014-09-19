@@ -12,6 +12,7 @@ namespace eRecruiter.ApplicantImport.Columns
         ZipCode,
         City,
         Cv,
-        Photo
+        Photo,
+        Document
     }
 }
