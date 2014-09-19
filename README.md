@@ -2,6 +2,10 @@
 
 Import applicant profiles from a CSV file into eRecruiter.
 
+## Latest build
+
+This project builds automatically on every commit. Current status is [![Build status](https://ci.appveyor.com/api/projects/status/la78wve86cn6p6qj)](https://ci.appveyor.com/project/saxx/erecruiter-applicantimport)
+
 ## Supported applicant attributes
 
 - **First name:** `FirstName` - must never be empty
