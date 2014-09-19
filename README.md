@@ -4,7 +4,7 @@ Import applicant profiles from a CSV file into eRecruiter.
 
 ## Latest build
 
-This project builds automatically on every commit using AppVeyor:
+This project builds automatically on every commit using AppVeyor. You can download the latest build here: https://ci.appveyor.com/project/saxx/erecruiter-applicantimport/build/artifacts
 
 [![Build status](https://ci.appveyor.com/api/projects/status/2rn1eok9hfjnrlcr)](https://ci.appveyor.com/project/saxx/erecruiter-applicantimport)
 
