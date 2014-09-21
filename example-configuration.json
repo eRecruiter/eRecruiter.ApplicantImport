@@ -123,6 +123,10 @@
 			Header: "Kenntnis Java",
 			Type: "Knowledge",
 			SubType: "Java"
+		},
+		{
+			Header: "Überflüssige Information",
+			Type: "Ignore"
 		}
 	]	
 }

@@ -35,6 +35,7 @@ Each applicant attribute corresponds to a column in your CSV file. At the moment
 - **Referrer:** `Referrer`
 - **Referrer additional information:** `ReferrerAdditionalInfo` - if present, a column for `Referrer` must be present as well.
 - **Knowledge:** `Knowledge` - Configuration for `SubType` is required to specify the knowledge.
+- **Ignore:** `Ignore` - Specifically configure columns that should be ignored at all.
 
 ## Known problems and shortcomings
 
