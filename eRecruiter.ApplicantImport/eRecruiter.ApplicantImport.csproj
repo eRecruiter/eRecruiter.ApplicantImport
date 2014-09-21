@@ -67,7 +67,10 @@
     <Compile Include="ApiClientFactory.cs" />
     <Compile Include="Columns\AbstractColumn.cs" />
     <Compile Include="Columns\BeginDateColumn.cs" />
+    <Compile Include="Columns\ClassificationColumn.cs" />
+    <Compile Include="Columns\NationalityColumn.cs" />
     <Compile Include="Columns\IdColumn.cs" />
+    <Compile Include="Columns\CountryColumn.cs" />
     <Compile Include="Columns\TitleColumn.cs" />
     <Compile Include="Columns\RegionColumn.cs" />
     <Compile Include="Columns\JobProfileColumn.cs" />

@@ -21,6 +21,8 @@ Each applicant attribute corresponds to a column in your CSV file. At the moment
 - **Street (address):** `Street`
 - **ZIP code:** `ZipCode`
 - **City (address):** `City`
+- **Country (address):** `Country`
+- **Nationality (citizenship):** `Nationality`
 - **CV:** `Cv` - must be empty or a path to an existing file
 - **Photo** (applicant portrait): `Photo` - must be empty or a path to an existing file
 - **Document:** `Document` - must be empty or a path to an existing file (to import single file) or directory (to import all files in directory). Also, configuration for `SubType` is required to specify the applicant document type.
@@ -28,6 +30,7 @@ Each applicant attribute corresponds to a column in your CSV file. At the moment
 - **Region:** `Region`
 - **Earliest possible begin date:** `BeginDate` - use `DateFormat` to specify the date format, default is `yyyy-MM-dd`.
 - **Applicant #:** `Id` - this is actually a "magic column". If it is specified (and contains a valid applicant #), existing applicants will be updated instead of newly created. This is very handy if you want to bulk-add information to already existing applicants.
+- **Career level:** `Careerlevel`
 
 ## Known problems and shortcomings
 

@@ -51,6 +51,14 @@
 			Type: "City"
 		},
 		{
+			Header: "Land",
+			Type: "Country",
+		},
+		{
+			Header: "Staatsbürgerschaft",
+			Type: "Nationality",
+		},,
+		{
 			Header: "Lebenslauf",
 			Type: "Cv"
 		},
@@ -88,6 +96,10 @@
 			Header: "Einstiegsdatum",
 			Type: "BeginDate",
 			DateFormat: "dd.MM.yyyy"
-		}
+		},
+		{
+			Header: "Karrierelevel",
+			Type: "Careerlevel",
+		},
 	]	
 }

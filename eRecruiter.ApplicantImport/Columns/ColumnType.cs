@@ -19,6 +19,17 @@ namespace eRecruiter.ApplicantImport.Columns
         Region,
         Id,
         Title,
-        BeginDate
+        BeginDate,
+        Careerlevel,
+        Country,
+        Nationality
+        /*Referrer,
+         Classification
+         BirthDate,
+         Knowledge,
+         CreationDate,
+         History,
+         ImportantInformation,
+         CustomField*/
     }
 }
