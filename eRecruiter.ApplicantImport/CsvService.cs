@@ -2,6 +2,7 @@
 using CsvHelper.Configuration;
 using eRecruiter.Api.Client;
 using eRecruiter.ApplicantImport.Columns;
+using eRecruiter.Utilities;
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
@@ -61,7 +62,10 @@ namespace eRecruiter.ApplicantImport
             if (hasErrors)
                 return csv;
 
-            hasWarnings = !AreValuesValid(csv);
+            hasWarnings = !AreAllColumnsFromConfigurationInCsv(csv);
+            hasWarnings = !AreAllColumnsFromCsvInConfiguration(csv) || hasWarnings;
+            hasWarnings = !AreValuesValid(csv) || hasWarnings;
+
             return csv;
         }
 
@@ -91,6 +95,34 @@ namespace eRecruiter.ApplicantImport
                 {
                     var column = ColumnFactory.GetColumn(c);
                     result = column.IsValueValid(row.ContainsKey(c.Header) ? row[c.Header] as string : null, _apiClient) && result;
+                }
+            }
+            return result;
+        }
+
+        private bool AreAllColumnsFromConfigurationInCsv(Csv csv)
+        {
+            var result = true;
+            foreach (var column in _configuration.Columns)
+            {
+                if (!csv.Headers.Any(x => x.Is(column.Header)))
+                {
+                    Program.WriteWarning("The column '" + column.Header + "' is specified in configuration, but not found in CSV.");
+                    result = false;
+                }
+            }
+            return result;
+        }
+
+        private bool AreAllColumnsFromCsvInConfiguration(Csv csv)
+        {
+            var result = true;
+            foreach (var column in csv.Headers)
+            {
+                if (!_configuration.Columns.Any(x => x.Header.Is(column)))
+                {
+                    Program.WriteWarning("The column '" + column + "' is found in CSV, but not specified in configuration.");
+                    result = false;
                 }
             }
             return result;
