@@ -66,7 +66,11 @@
   <ItemGroup>
     <Compile Include="ApiClientFactory.cs" />
     <Compile Include="Columns\AbstractColumn.cs" />
+    <Compile Include="Columns\BirthdateColumn.cs" />
     <Compile Include="Columns\BeginDateColumn.cs" />
+    <Compile Include="Columns\KnowledgeColumn.cs" />
+    <Compile Include="Columns\ReferrerAdditionalInfoColumn.cs" />
+    <Compile Include="Columns\ReferrerColumn.cs" />
     <Compile Include="Columns\ClassificationColumn.cs" />
     <Compile Include="Columns\NationalityColumn.cs" />
     <Compile Include="Columns\IdColumn.cs" />

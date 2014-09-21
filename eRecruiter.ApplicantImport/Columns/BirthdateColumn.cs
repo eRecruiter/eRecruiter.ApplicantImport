@@ -1,5 +1,4 @@
-﻿using eRecruiter.Api;
-using eRecruiter.Api.Client;
+﻿using eRecruiter.Api.Client;
 using eRecruiter.Api.Parameters;
 using eRecruiter.Utilities;
 using System;
@@ -7,9 +6,12 @@ using System.Globalization;
 
 namespace eRecruiter.ApplicantImport.Columns
 {
-    public class BeginDateColumn : AbstractColumn
+    public class BirthdateColumn : AbstractColumn
     {
-        public BeginDateColumn(string header) : base(ColumnType.Email, header) { }
+        public BirthdateColumn(string header)
+            : base(ColumnType.Birthdate, header)
+        {
+        }
 
         public override bool IsEntireConfigurationValid(Configuration configuration)
         {
@@ -32,7 +34,7 @@ namespace eRecruiter.ApplicantImport.Columns
             {
                 var date = ParseDate(value);
                 if (date != null)
-                    applicant.EarliestPossibleBeginDate = new FlexDate(date.Value);
+                    applicant.BirthDate = date.Value;
             }
         }
 

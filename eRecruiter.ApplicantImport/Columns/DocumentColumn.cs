@@ -43,36 +43,39 @@ namespace eRecruiter.ApplicantImport.Columns
 
         public override void SetValueAfterCreate(string value, ApplicantResponse applicant, ApiHttpClient apiClient)
         {
-            if (value != null && value.HasValue() && File.Exists(value))
+            if (value != null && value.HasValue() && IsDocumentTypeAvailable(apiClient))
             {
-                SetFile(value, applicant, apiClient);
-            }
-            else if (value != null && value.HasValue() && Directory.Exists(value))
-            {
-                foreach (var file in Directory.GetFiles(value))
-                    SetFile(file, applicant, apiClient);
+                if (File.Exists(value))
+                {
+                    SetFile(value, applicant, apiClient);
+                }
+                else if (Directory.Exists(value))
+                {
+                    foreach (var file in Directory.GetFiles(value))
+                        SetFile(file, applicant, apiClient);
+                }
             }
         }
 
         private void SetFile(string filePath, ApplicantResponse applicant, ApiHttpClient apiClient)
         {
-            if (IsDocumentTypeAvailable(apiClient))
+            var bytes = File.ReadAllBytes(filePath);
+            new ApplicantDocumentPutRequest(applicant.Id, new ApplicantDocumentParameter
             {
-                var bytes = File.ReadAllBytes(filePath);
-                new ApplicantDocumentPutRequest(applicant.Id, new ApplicantDocumentParameter
-                {
-                    Content = bytes,
-                    Name = Path.GetFileName(filePath),
-                    FileExtension = Path.GetExtension(filePath),
-                    Type = SubType
-                }).LoadResult(apiClient);
-            }
+                Content = bytes,
+                Name = Path.GetFileName(filePath),
+                FileExtension = Path.GetExtension(filePath),
+                Type = SubType
+            }).LoadResult(apiClient);
         }
 
 
         private static MandatorResponse _mandator;
         private bool IsDocumentTypeAvailable(ApiHttpClient apiClient)
         {
+            if (SubType.IsNoE())
+                return false;
+
             _mandator = _mandator ?? new MandatorRequest(new Uri("http://does_not_matter")).LoadResult(apiClient);
             return _mandator.ApplicantDocumentTypes.Any(x => x.Is(SubType));
         }

@@ -22,11 +22,12 @@ namespace eRecruiter.ApplicantImport.Columns
         BeginDate,
         Careerlevel,
         Country,
-        Nationality
-        /*Referrer,
-         Classification
-         BirthDate,
-         Knowledge,
+        Nationality,
+        Referrer,
+        ReferrerAdditionalInfo,
+        Birthdate,
+        Knowledge
+        /* Classification
          CreationDate,
          History,
          ImportantInformation,

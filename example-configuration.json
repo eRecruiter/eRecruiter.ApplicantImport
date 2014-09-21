@@ -57,7 +57,11 @@
 		{
 			Header: "Staatsbürgerschaft",
 			Type: "Nationality",
-		},,
+		},
+		{
+			Header: "Geburtsdatum",
+			Type: "Birthdate",
+		},
 		{
 			Header: "Lebenslauf",
 			Type: "Cv"
@@ -99,7 +103,25 @@
 		},
 		{
 			Header: "Karrierelevel",
-			Type: "Careerlevel",
+			Type: "Careerlevel"
 		},
+		{
+			Header: "Bewerberquelle",
+			Type: "Referrer"
+		},
+		{
+			Header: "Bewerberquelle (Zusatzinformation)",
+			Type: "ReferrerAdditionalInfo"
+		},
+		{
+			Header: "Kenntnis C#",
+			Type: "Knowledge",
+			SubType: "C#"
+		},
+		{
+			Header: "Kenntnis Java",
+			Type: "Knowledge",
+			SubType: "Java"
+		}
 	]	
 }
