@@ -44,7 +44,7 @@ namespace eRecruiter.ApplicantImport
                 }
                 else
                 {
-                    Program.Write(string.Format("Importing applicant {0}/{1} ...", ++count, total));
+                    Program.Write(string.Format("Creating applicant {0}/{1} ...", ++count, total));
                     applicantParameter = new ApplicantParameter
                     {
                         FirstName = "First-Name",

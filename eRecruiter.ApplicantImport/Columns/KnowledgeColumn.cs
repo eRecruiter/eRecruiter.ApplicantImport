@@ -34,7 +34,7 @@ namespace eRecruiter.ApplicantImport.Columns
 
         public override bool IsValueValid(string value, ApiHttpClient apiClient)
         {
-            if (!IsKnowledgeLevelAvailable(value, apiClient))
+            if (value.HasValue() && !IsKnowledgeLevelAvailable(value, apiClient))
             {
                 Program.WriteWarning("There is no knowledge level '" + value + "'.");
                 return false;

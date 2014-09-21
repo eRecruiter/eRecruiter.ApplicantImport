@@ -42,6 +42,7 @@ Each applicant attribute corresponds to a column in your CSV file. At the moment
 - It's not possible to set custom fields at the moment.
 - It's not possible to add "important information" to an applicant at the moment.
 - It's not possible to add a history entry to an applicant at the moment.
+- It's not possible to set applicant classification at the moment.
 - The auto-generated history entries are a little buggy at the moment:
     - Base information (name, gender, e-mail) are not displayed in history (they are set correctly tho).
     - Photos are displayed as [-] instead of [+].

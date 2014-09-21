@@ -52,15 +52,16 @@
 		},
 		{
 			Header: "Land",
-			Type: "Country",
+			Type: "Country"
 		},
 		{
 			Header: "Staatsbürgerschaft",
-			Type: "Nationality",
+			Type: "Nationality"
 		},
 		{
 			Header: "Geburtsdatum",
 			Type: "Birthdate",
+			DateFormat: "dd.MM.yyyy"
 		},
 		{
 			Header: "Lebenslauf",
