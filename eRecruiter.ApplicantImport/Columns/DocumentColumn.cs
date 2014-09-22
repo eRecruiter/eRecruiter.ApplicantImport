@@ -65,7 +65,8 @@ namespace eRecruiter.ApplicantImport.Columns
                 Content = bytes,
                 Name = Path.GetFileName(filePath),
                 FileExtension = Path.GetExtension(filePath),
-                Type = SubType
+                Type = SubType,
+                IsPublic = false
             }).LoadResult(apiClient);
         }
 
