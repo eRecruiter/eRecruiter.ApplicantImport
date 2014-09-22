@@ -35,6 +35,10 @@ Each applicant attribute corresponds to a column in your CSV file. At the moment
 - **Referrer:** `Referrer`
 - **Referrer additional information:** `ReferrerAdditionalInfo` - if present, a column for `Referrer` must be present as well.
 - **Knowledge:** `Knowledge` - Configuration for `SubType` is required to specify the knowledge.
+- **Date of creation:** `CreationDate` - use `DateFormat` to specify the date format, default is `yyyy-MM-dd`.
+- **Important information (about applicant:** `ImportantInfo`
+- **Classification:** `Classification`
+- **Classification reason:** `ClassificationReason` - if present, a column for `Classification` must be present as well.
 - **Ignore:** `Ignore` - Specifically configure columns that should be ignored at all.
 
 ## Known problems and shortcomings

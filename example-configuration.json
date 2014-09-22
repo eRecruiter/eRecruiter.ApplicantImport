@@ -127,6 +127,23 @@
 		{
 			Header: "Überflüssige Information",
 			Type: "Ignore"
+		},
+		{
+			Header: "Erstellungsdatum",
+			Type: "CreationDate",
+			DateFormat: "dd.MM.yyyy"
+		},
+		{
+			Header: "Wichtige Zusatzinformation",
+			Type: "ImportantInfo"
+		},
+		{
+			Header: "Klassifizierung",
+			Type: "Classification"
+		},
+		{
+			Header: "Klassifizierung (Begründung)",
+			Type: "ClassificationReason"
 		}
 	]	
 }

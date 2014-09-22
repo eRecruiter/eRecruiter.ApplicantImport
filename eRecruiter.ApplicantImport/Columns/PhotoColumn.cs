@@ -41,10 +41,9 @@ namespace eRecruiter.ApplicantImport.Columns
             if (value.HasValue() && File.Exists(value))
             {
                 var bytes = File.ReadAllBytes(value);
-                new ApplicantPhotoPutRequest(applicant.Id, new ApplicantDocumentParameter
+                new ApplicantPhotoPutRequest(applicant.Id, new ApplicantPhotoParameter
                 {
                     Content = bytes,
-                    Name = Path.GetFileName(value),
                     FileExtension = Path.GetExtension(value)
                 }).LoadResult(apiClient);
             }

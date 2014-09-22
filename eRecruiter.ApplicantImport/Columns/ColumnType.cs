@@ -27,11 +27,13 @@ namespace eRecruiter.ApplicantImport.Columns
         ReferrerAdditionalInfo,
         Birthdate,
         Knowledge,
-        Ignore
-        /* Classification
-         CreationDate,
+        Ignore,
+        CreationDate,
+        ImportantInfo,
+        Classification,
+        ClassificationReason
+        /* 
          History,
-         ImportantInformation,
          CustomField*/
     }
 }

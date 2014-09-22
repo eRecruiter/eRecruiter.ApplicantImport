@@ -39,11 +39,13 @@
     <Reference Include="CsvHelper">
       <HintPath>..\packages\CsvHelper.2.7.1\lib\net40-client\CsvHelper.dll</HintPath>
     </Reference>
-    <Reference Include="eRecruiter.Api">
-      <HintPath>..\packages\eRecruiter.Api.1.0.0\lib\net45\eRecruiter.Api.dll</HintPath>
+    <Reference Include="eRecruiter.Api, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\eRecruiter.Api.1.1.1\lib\net45\eRecruiter.Api.dll</HintPath>
     </Reference>
-    <Reference Include="eRecruiter.Api.Client">
-      <HintPath>..\packages\eRecruiter.Api.Client.1.0.0\lib\net45\eRecruiter.Api.Client.dll</HintPath>
+    <Reference Include="eRecruiter.Api.Client, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\eRecruiter.Api.Client.1.1.1\lib\net45\eRecruiter.Api.Client.dll</HintPath>
     </Reference>
     <Reference Include="eRecruiter.Utilities">
       <HintPath>..\packages\eRecruiter.Utilities.1.0.0\lib\net40-Client\eRecruiter.Utilities.dll</HintPath>
@@ -67,16 +69,20 @@
   <ItemGroup>
     <Compile Include="ApiClientFactory.cs" />
     <Compile Include="Columns\AbstractColumn.cs" />
+    <Compile Include="Columns\CreationDateColumn.cs" />
     <Compile Include="Columns\BirthdateColumn.cs" />
     <Compile Include="Columns\BeginDateColumn.cs" />
     <Compile Include="Columns\IgnoreColumn.cs" />
     <Compile Include="Columns\KnowledgeColumn.cs" />
+    <Compile Include="Columns\ClassificationReasonColumn.cs" />
     <Compile Include="Columns\ReferrerAdditionalInfoColumn.cs" />
-    <Compile Include="Columns\ReferrerColumn.cs" />
     <Compile Include="Columns\ClassificationColumn.cs" />
+    <Compile Include="Columns\ReferrerColumn.cs" />
+    <Compile Include="Columns\CareerlevelColumn.cs" />
     <Compile Include="Columns\NationalityColumn.cs" />
     <Compile Include="Columns\IdColumn.cs" />
     <Compile Include="Columns\CountryColumn.cs" />
+    <Compile Include="Columns\ImportantInfoColumn.cs" />
     <Compile Include="Columns\TitleColumn.cs" />
     <Compile Include="Columns\RegionColumn.cs" />
     <Compile Include="Columns\JobProfileColumn.cs" />
