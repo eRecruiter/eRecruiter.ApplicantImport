@@ -144,6 +144,22 @@
 		{
 			Header: "Klassifizierung (Begründung)",
 			Type: "ClassificationReason"
+		},
+		{
+			Header: "Sperrvermerk",
+			Type: "CustomField",
+			SubType: "Sperrvermerk"
+		},
+		{
+			Header: "Interne Anmerkung",
+			Type: "CustomField",
+			SubType: "Interne_Anmerkung"
+		},
+		{
+			Header: "Internes Datum",
+			Type: "CustomField",
+			SubType: "Internes_Datum",
+			DateFormat: "dd.MM.yyyy"
 		}
 	]	
 }

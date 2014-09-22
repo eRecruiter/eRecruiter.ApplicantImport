@@ -31,9 +31,8 @@ namespace eRecruiter.ApplicantImport.Columns
         CreationDate,
         ImportantInfo,
         Classification,
-        ClassificationReason
-        /* 
-         History,
-         CustomField*/
+        ClassificationReason,
+        CustomField
+        /* History - not supported in API yet */
     }
 }

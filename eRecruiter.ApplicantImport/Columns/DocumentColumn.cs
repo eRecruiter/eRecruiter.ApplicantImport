@@ -76,7 +76,7 @@ namespace eRecruiter.ApplicantImport.Columns
             if (SubType.IsNoE())
                 return false;
 
-            _mandator = _mandator ?? new MandatorRequest(new Uri("http://does_not_matter")).LoadResult(apiClient);
+            _mandator = _mandator ?? new MandatorRequest().LoadResult(apiClient);
             return _mandator.ApplicantDocumentTypes.Any(x => x.Is(SubType));
         }
     }

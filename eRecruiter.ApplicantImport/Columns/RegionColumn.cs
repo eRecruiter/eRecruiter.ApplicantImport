@@ -39,7 +39,7 @@ namespace eRecruiter.ApplicantImport.Columns
 
         private bool IsRegionAvailable(string value, ApiHttpClient apiClient)
         {
-            _mandator = _mandator ?? new MandatorRequest(new Uri("http://does_not_matter")).LoadResult(apiClient);
+            _mandator = _mandator ?? new MandatorRequest().LoadResult(apiClient);
             return IsRegionAvailable(value, _mandator.Regions);
         }
 

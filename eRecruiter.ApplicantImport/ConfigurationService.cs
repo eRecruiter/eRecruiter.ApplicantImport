@@ -79,7 +79,7 @@ namespace eRecruiter.ApplicantImport
             // endpoint must return valid mandator response
             try
             {
-                new MandatorRequest(new Uri("http://does_not_matter")).LoadResult(apiClient);
+                new MandatorRequest().LoadResult(apiClient);
             }
             catch (Exception ex)
             {

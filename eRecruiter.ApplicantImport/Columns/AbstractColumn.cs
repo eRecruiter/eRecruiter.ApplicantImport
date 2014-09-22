@@ -74,7 +74,7 @@ namespace eRecruiter.ApplicantImport.Columns
             return true;
         }
 
-        protected bool IsValidValue(string value, IEnumerable<string> allowedValues)
+        protected bool IsValueInList(string value, IEnumerable<string> allowedValues)
         {
             // ReSharper disable PossibleMultipleEnumeration
             if (!allowedValues.Any(x => x.Is(value)))

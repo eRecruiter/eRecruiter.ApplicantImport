@@ -39,7 +39,7 @@ namespace eRecruiter.ApplicantImport.Columns
         private static MandatorResponse _mandator;
         private bool IsReferrerAvailable(string value, ApiHttpClient apiClient)
         {
-            _mandator = _mandator ?? new MandatorRequest(new Uri("http://does_not_matter")).LoadResult(apiClient);
+            _mandator = _mandator ?? new MandatorRequest().LoadResult(apiClient);
             return _mandator.Referrers.Any(x => x.Name.Is(value));
         }
     }

@@ -51,7 +51,7 @@ namespace eRecruiter.ApplicantImport.Columns
 
         private IEnumerable<string> GetTitles(bool beforeName, ApiHttpClient apiClient)
         {
-            _mandator = _mandator ?? new MandatorRequest(new Uri("http://does_not_matter")).LoadResult(apiClient);
+            _mandator = _mandator ?? new MandatorRequest().LoadResult(apiClient);
             if (beforeName)
                 return _mandator.TitlesBeforeName.Select(x => x.Name);
             return _mandator.TitlesAfterName.Select(x => x.Name);

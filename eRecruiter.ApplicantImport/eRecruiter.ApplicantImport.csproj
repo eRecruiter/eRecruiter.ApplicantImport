@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="ApiClientFactory.cs" />
     <Compile Include="Columns\AbstractColumn.cs" />
+    <Compile Include="Columns\CustomFieldColumn.cs" />
     <Compile Include="Columns\CreationDateColumn.cs" />
     <Compile Include="Columns\BirthdateColumn.cs" />
     <Compile Include="Columns\BeginDateColumn.cs" />
