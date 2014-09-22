@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using eRecruiter.Api.Client;
+﻿using eRecruiter.Api.Client;
 using eRecruiter.Api.Client.Requests;
 using eRecruiter.ApplicantImport.Columns;
 using JetBrains.Annotations;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace eRecruiter.ApplicantImport
 {

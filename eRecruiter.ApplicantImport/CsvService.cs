@@ -34,16 +34,7 @@ namespace eRecruiter.ApplicantImport
             Csv csv;
             try
             {
-                var csvConfiguration = new CsvConfiguration
-                {
-                    Delimiter = "\t",
-                    HasHeaderRecord = true,
-                    TrimFields = true,
-                    TrimHeaders = true,
-                    SkipEmptyRecords = true
-                };
-
-                var reader = new CsvReader(new StreamReader(_commandLineArguments.CsvFile, Encoding.UTF8), csvConfiguration);
+                var reader = new CsvReader(new StreamReader(_commandLineArguments.CsvFile, Encoding.UTF8), GetDefaultCsvConfiguration());
                 csv = new Csv
                 {
                     Values = reader.GetRecords<dynamic>().Select(x => x as IDictionary<string, object>).ToList(),
@@ -126,6 +117,18 @@ namespace eRecruiter.ApplicantImport
                 }
             }
             return result;
+        }
+
+        public static CsvConfiguration GetDefaultCsvConfiguration()
+        {
+            return new CsvConfiguration
+             {
+                 Delimiter = "\t",
+                 HasHeaderRecord = true,
+                 TrimFields = true,
+                 TrimHeaders = true,
+                 SkipEmptyRecords = true
+             };
         }
     }
 }

@@ -38,6 +38,13 @@ namespace eRecruiter.ApplicantImport
             Write("");
             #endregion
 
+            if (commandLineArguments.GenerateCsvStub)
+            {
+                new CsvStubService(configuration).GenerateCsvStub(commandLineArguments.CsvFile);
+                Write("Exiting ...");
+                Environment.Exit(0);
+            }
+
             #region CSV file
             Write("Reading and verifying CSV file ...");
             var csv = new CsvService(commandLineArguments, configuration).ReadAndVerify(out hasErrors, out hasWarnings);

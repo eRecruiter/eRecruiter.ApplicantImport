@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using eRecruiter.Utilities;
+using JetBrains.Annotations;
 using System;
 using System.IO;
 
@@ -25,9 +26,15 @@ namespace eRecruiter.ApplicantImport
                     Program.WriteError(string.Format("Configuration file {0} not found.", options.ConfigurationFile));
                     requiresExit = true;
                 }
-                if (!File.Exists(options.CsvFile))
+
+                if (!options.GenerateCsvStub && !File.Exists(options.CsvFile))
                 {
                     Program.WriteError(string.Format("CSV file {0} not found.", options.CsvFile));
+                    requiresExit = true;
+                }
+                else if (options.GenerateCsvStub && File.Exists(options.CsvFile))
+                {
+                    Program.WriteError(string.Format("CSV stub file {0} already exists.", options.CsvFile));
                     requiresExit = true;
                 }
             }

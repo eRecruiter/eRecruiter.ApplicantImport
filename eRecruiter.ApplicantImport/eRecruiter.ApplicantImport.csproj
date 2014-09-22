@@ -107,6 +107,7 @@
     <Compile Include="Csv.cs" />
     <Compile Include="CsvService.cs" />
     <Compile Include="ConfigurationService.cs" />
+    <Compile Include="CsvStubService.cs" />
     <Compile Include="ImportService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

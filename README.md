@@ -55,7 +55,7 @@ Each applicant attribute corresponds to a column in your CSV file. At the moment
 - Imported documents are always public, meaning they are visible on the applicant portal.
 
 ## Usage
-`eRecruiter.ApplicantImport.exe --config=your_config_file.json --file=your_csv_file.csv [--continueOnWarnings]`
+`eRecruiter.ApplicantImport.exe --config=your_config_file.json --file=your_csv_file.csv [--continueOnWarnings] [--generateCsvStub]`
 
 You'll need to specify a configuration file (contains API and column configuration) and a CSV file (contains the actual data to import).
 

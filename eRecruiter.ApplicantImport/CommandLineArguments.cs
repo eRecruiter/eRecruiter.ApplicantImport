@@ -18,11 +18,14 @@ namespace eRecruiter.ApplicantImport
         [Option('w', "continueOnWarnings", Required = false, HelpText = "Whether or not to automatically continue, even when warnings have been found.")]
         public bool ContinueOnWarnings { get; set; }
 
+        [Option('s', "generateCsvStub", Required = false, HelpText = "Whether or not to build an empty CSV file that contains all columns specified in the configuration.")]
+        public bool GenerateCsvStub { get; set; }
+
         [HelpOption]
         public string GetUsage()
         {
             Program.WriteError("Usage:");
-            Program.WriteError("eRecruiter.ApplicantImport.exe --config=MyConfig.json --file=Applicants.csv [--continueOnWarning]");
+            Program.WriteError("eRecruiter.ApplicantImport.exe --config=MyConfig.json --file=Applicants.csv [--continueOnWarning] [--generateCsvStub]");
             return "";
         }
     }
