@@ -81,7 +81,7 @@ namespace eRecruiter.ApplicantImport.Columns
         private CustomFieldResponse GetCustomField(ApiHttpClient apiClient)
         {
             _mandator = _mandator ?? new MandatorRequest().LoadResult(apiClient);
-            return _mandator.CustomFields.FirstOrDefault(x => x.Name.Is(SubType));
+            return _mandator.CustomFields.FirstOrDefault(x => x.Name.Is(SubType) && (x.Target == CustomFieldResponse.CustomFieldTarget.Applicant || x.Target == CustomFieldResponse.CustomFieldTarget.ApplicantCompany || x.Target == CustomFieldResponse.CustomFieldTarget.JobApplicantCompany || x.Target == CustomFieldResponse.CustomFieldTarget.JobApplicant));
         }
 
         private DateTime? ParseDate(string value)
