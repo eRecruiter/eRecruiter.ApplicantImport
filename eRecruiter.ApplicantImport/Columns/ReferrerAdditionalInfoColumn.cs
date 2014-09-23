@@ -11,7 +11,7 @@ namespace eRecruiter.ApplicantImport.Columns
 
         public override bool IsEntireConfigurationValid(Configuration configuration)
         {
-            if (configuration.Columns.All(x => x.Type != ColumnType.Referrer))
+            if (configuration.Columns.Any(x => x.Type == Type) && configuration.Columns.All(x => x.Type != ColumnType.Referrer))
             {
                 Program.WriteWarning("There is a column for 'Referrer Additional Info', but none for 'Referrer'.");
                 return false;

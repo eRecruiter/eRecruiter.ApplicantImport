@@ -45,9 +45,6 @@ Each applicant attribute corresponds to a column in your CSV file. At the moment
 ## Known problems and shortcomings
 
 - It's not possible to add a history entry to an applicant at the moment.
-- The auto-generated history entries are a little buggy at the moment:
-    - Base information (name, gender, e-mail) are not displayed in history (they are set correctly tho).
-    - Photos are displayed as [-] instead of [+].
 
 ## Usage
 `eRecruiter.ApplicantImport.exe --config=your_config_file.json --file=your_csv_file.csv [--continueOnWarnings] [--generateCsvStub]`

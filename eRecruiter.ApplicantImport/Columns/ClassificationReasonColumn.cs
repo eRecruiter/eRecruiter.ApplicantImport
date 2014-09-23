@@ -11,7 +11,7 @@ namespace eRecruiter.ApplicantImport.Columns
 
         public override bool IsEntireConfigurationValid(Configuration configuration)
         {
-            if (configuration.Columns.All(x => x.Type != ColumnType.Classification))
+            if (configuration.Columns.Any(x => x.Type == Type) && configuration.Columns.All(x => x.Type != ColumnType.Classification))
             {
                 Program.WriteWarning("There is a column for 'Classification Reason', but none for 'Classification'.");
                 return false;
