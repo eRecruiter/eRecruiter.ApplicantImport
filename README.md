@@ -8,6 +8,17 @@ This nifty little tool builds automatically on every commit on GitHub using AppV
 
 [![Build status](https://ci.appveyor.com/api/projects/status/2rn1eok9hfjnrlcr)](https://ci.appveyor.com/project/saxx/erecruiter-applicantimport)
 
+## Usage
+`eRecruiter.ApplicantImport.exe --config=your_config_file.json --file=your_csv_file.csv`
+
+You'll need to specify a configuration file (contains API and column configuration) and a CSV file (contains the actual data to import).
+
+Use optional parameter `--continueOnWarnings` to automatically continue on warnings. This is useful when running as an automated job.
+
+Use optional parameter `--generateCsvStub` to create an empty CSV file based on the configuration specified. This will not import anything and is nothing but a helper to get started quickly with new CSV files. This CSV file will be created on the location specified with the `--file` parameter.
+
+Use optional parameter `--logFile=log.txt` to output all messages/errors/warnings to a log file in addition to the usual output on the console.
+
 ## Supported applicant attributes
 Each applicant attribute corresponds to a column in your CSV file. At the moment, these attributes are supported:
 
@@ -45,11 +56,6 @@ Each applicant attribute corresponds to a column in your CSV file. At the moment
 ## Known problems and shortcomings
 
 - It's not possible to add a history entry to an applicant at the moment.
-
-## Usage
-`eRecruiter.ApplicantImport.exe --config=your_config_file.json --file=your_csv_file.csv [--continueOnWarnings] [--generateCsvStub]`
-
-You'll need to specify a configuration file (contains API and column configuration) and a CSV file (contains the actual data to import).
 
 ### Configuration file
 For an example JSON configuration file that contains all supported applicant attributes, see [example-configuration.json](example-configuration.json)

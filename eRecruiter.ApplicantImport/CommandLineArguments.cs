@@ -21,11 +21,14 @@ namespace eRecruiter.ApplicantImport
         [Option('s', "generateCsvStub", Required = false, HelpText = "Whether or not to build an empty CSV file that contains all columns specified in the configuration.")]
         public bool GenerateCsvStub { get; set; }
 
+        [Option('l', "logFile", Required = false, HelpText = "The (relative or absolute) path to a file to log all console output to.")]
+        public string LogFile { get; set; }
+
         [HelpOption]
         public string GetUsage()
         {
             Program.WriteError("Usage:");
-            Program.WriteError("eRecruiter.ApplicantImport.exe --config=MyConfig.json --file=Applicants.csv [--continueOnWarning] [--generateCsvStub]");
+            Program.WriteError("eRecruiter.ApplicantImport.exe --config=MyConfig.json --file=Applicants.csv [--continueOnWarning] [--generateCsvStub] [--logFile=log.txt]");
             return "";
         }
     }
