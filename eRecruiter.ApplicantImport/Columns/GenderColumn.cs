@@ -8,8 +8,8 @@ namespace eRecruiter.ApplicantImport.Columns
 {
     public class GenderColumn : AbstractColumn
     {
-        private readonly string[] _maleValues = { "H", "M", "Herr", "Mr." };
-        private readonly string[] _femaleValues = { "F", "W", "Frau", "Ms.", "Mrs." };
+        private readonly string[] _maleValues = { "H", "M", "Herr", "Mr.", "1" };
+        private readonly string[] _femaleValues = { "F", "W", "Frau", "Ms.", "Mrs.", "0" };
 
         public GenderColumn(string header) : base(ColumnType.Gender, header) { }
 
