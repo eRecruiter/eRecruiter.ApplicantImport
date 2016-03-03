@@ -1,7 +1,7 @@
-﻿using eRecruiter.Utilities;
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
+using eRecruiter.Utilities;
 
 namespace eRecruiter.ApplicantImport
 {
@@ -46,9 +46,13 @@ namespace eRecruiter.ApplicantImport
                 Environment.Exit(2);
             }
             if (hasWarnings)
+            {
                 ConfirmWarnings(commandLineArguments);
+            }
             else
+            {
                 Write("Configuration file seems okay.");
+            }
             Write("");
 
             #endregion
@@ -70,9 +74,13 @@ namespace eRecruiter.ApplicantImport
                 Environment.Exit(3);
             }
             if (hasWarnings)
+            {
                 ConfirmWarnings(commandLineArguments);
+            }
             else
+            {
                 Write("CSV file seems okay.");
+            }
             Write("");
 
             #endregion
@@ -123,7 +131,9 @@ namespace eRecruiter.ApplicantImport
             Console.BackgroundColor = ConsoleColor.Red;
             Console.ForegroundColor = ConsoleColor.White;
             foreach (var line in lines)
+            {
                 Console.WriteLine("- " + line);
+            }
             WriteToLog(lines);
         }
 
@@ -132,18 +142,22 @@ namespace eRecruiter.ApplicantImport
             Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.ForegroundColor = ConsoleColor.White;
             foreach (var line in lines)
+            {
                 Console.WriteLine("- " + line);
+            }
             WriteToLog(lines);
         }
 
         private static void WriteToLog(params string[] lines)
         {
             if (_logFile.HasValue())
+            {
                 using (var writer = new StreamWriter(_logFile, true, Encoding.UTF8))
                 {
                     foreach (var line in lines)
                         writer.WriteLine(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "\t" + line);
                 }
+            }
         }
 
         #endregion

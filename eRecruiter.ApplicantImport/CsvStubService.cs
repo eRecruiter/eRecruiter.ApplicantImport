@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using CommandLine;
-using CsvHelper;
 using System.IO;
+using System.Text;
+using CsvHelper;
 
 namespace eRecruiter.ApplicantImport
 {
@@ -31,10 +28,14 @@ namespace eRecruiter.ApplicantImport
                 }
 
                 foreach (var field in dummyLine.Keys)
+                {
                     writer.WriteField(field);
+                }
                 writer.NextRecord();
                 foreach (var field in dummyLine.Keys)
+                {
                     writer.WriteField(dummyLine[field]);
+                }
             }
 
             Program.Write("CSV stub saved at '" + targetPath + "'.");

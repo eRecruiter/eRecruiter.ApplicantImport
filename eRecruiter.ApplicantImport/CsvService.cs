@@ -1,14 +1,14 @@
-﻿using CsvHelper;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using CsvHelper;
 using CsvHelper.Configuration;
 using eRecruiter.Api.Client;
 using eRecruiter.ApplicantImport.Columns;
 using eRecruiter.Utilities;
 using JetBrains.Annotations;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace eRecruiter.ApplicantImport
 {
@@ -34,7 +34,8 @@ namespace eRecruiter.ApplicantImport
             Csv csv;
             try
             {
-                var reader = new CsvReader(new StreamReader(_commandLineArguments.CsvFile, Encoding.UTF8), GetDefaultCsvConfiguration());
+                var reader = new CsvReader(new StreamReader(_commandLineArguments.CsvFile, Encoding.UTF8),
+                    GetDefaultCsvConfiguration());
                 csv = new Csv
                 {
                     Values = reader.GetRecords<dynamic>().Select(x => x as IDictionary<string, object>).ToList(),
@@ -51,7 +52,9 @@ namespace eRecruiter.ApplicantImport
 
             hasErrors = !IsCsvValid(csv);
             if (hasErrors)
+            {
                 return csv;
+            }
 
             hasWarnings = !AreAllColumnsFromConfigurationInCsv(csv);
             hasWarnings = !AreAllColumnsFromCsvInConfiguration(csv) || hasWarnings;
@@ -85,7 +88,9 @@ namespace eRecruiter.ApplicantImport
                 foreach (var c in _configuration.Columns)
                 {
                     var column = ColumnFactory.GetColumn(c);
-                    result = column.IsValueValid(row.ContainsKey(c.Header) ? row[c.Header] as string : null, _apiClient) && result;
+                    result =
+                        column.IsValueValid(row.ContainsKey(c.Header) ? row[c.Header] as string : null, _apiClient) &&
+                        result;
                 }
             }
             return result;
@@ -98,7 +103,8 @@ namespace eRecruiter.ApplicantImport
             {
                 if (!csv.Headers.Any(x => x.Is(column.Header)))
                 {
-                    Program.WriteWarning("The column '" + column.Header + "' is specified in configuration, but not found in CSV.");
+                    Program.WriteWarning("The column '" + column.Header +
+                                         "' is specified in configuration, but not found in CSV.");
                     result = false;
                 }
             }
@@ -112,7 +118,8 @@ namespace eRecruiter.ApplicantImport
             {
                 if (!_configuration.Columns.Any(x => x.Header.Is(column)))
                 {
-                    Program.WriteWarning("The column '" + column + "' is found in CSV, but not specified in configuration.");
+                    Program.WriteWarning("The column '" + column +
+                                         "' is found in CSV, but not specified in configuration.");
                     result = false;
                 }
             }
@@ -122,13 +129,13 @@ namespace eRecruiter.ApplicantImport
         public static CsvConfiguration GetDefaultCsvConfiguration()
         {
             return new CsvConfiguration
-             {
-                 Delimiter = "\t",
-                 HasHeaderRecord = true,
-                 TrimFields = true,
-                 TrimHeaders = true,
-                 SkipEmptyRecords = true
-             };
+            {
+                Delimiter = "\t",
+                HasHeaderRecord = true,
+                TrimFields = true,
+                TrimHeaders = true,
+                SkipEmptyRecords = true
+            };
         }
     }
 }

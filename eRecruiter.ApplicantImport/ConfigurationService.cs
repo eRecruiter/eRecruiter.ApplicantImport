@@ -1,10 +1,11 @@
-﻿using eRecruiter.Api.Client;
+﻿using System;
+using System.IO;
+using System.Linq;
+using eRecruiter.Api.Client;
 using eRecruiter.Api.Client.Requests;
 using eRecruiter.ApplicantImport.Columns;
 using JetBrains.Annotations;
-using System;
-using System.IO;
-using System.Linq;
+using Newtonsoft.Json;
 
 namespace eRecruiter.ApplicantImport
 {
@@ -26,12 +27,16 @@ namespace eRecruiter.ApplicantImport
             // parse the JSON and check if we get a filled configuration back
             try
             {
-                configuration = Newtonsoft.Json.JsonConvert.DeserializeObject<Configuration>(File.ReadAllText(_commandLineArguments.ConfigurationFile));
+                configuration =
+                    JsonConvert.DeserializeObject<Configuration>(
+                        File.ReadAllText(_commandLineArguments.ConfigurationFile));
                 if (configuration == null
                     || configuration.Api == null
                     || configuration.Columns == null
                     || configuration.Columns.Any(x => x == null))
+                {
                     throw new ApplicationException("Configuration invalid or missing.");
+                }
             }
             catch (Exception ex)
             {
@@ -43,7 +48,9 @@ namespace eRecruiter.ApplicantImport
 
             hasErrors = !IsEndpointValid(configuration);
             if (hasErrors)
+            {
                 return configuration;
+            }
 
             var apiClient = ApiClientFactory.GetClient(configuration);
             hasWarnings = !IsEntireConfigurationValid(configuration) || !IsEveryColumnValid(configuration, apiClient);
@@ -108,9 +115,9 @@ namespace eRecruiter.ApplicantImport
         {
             var result = true;
             // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach (ColumnType c in Enum.GetValues(typeof(ColumnType)))
+            foreach (ColumnType c in Enum.GetValues(typeof (ColumnType)))
             {
-                var column = ColumnFactory.GetColumn(new Configuration.Column { Header = "Some_Header", Type = c });
+                var column = ColumnFactory.GetColumn(new Configuration.Column {Header = "Some_Header", Type = c});
                 result = column.IsEntireConfigurationValid(configuration) && result;
             }
             return result;
