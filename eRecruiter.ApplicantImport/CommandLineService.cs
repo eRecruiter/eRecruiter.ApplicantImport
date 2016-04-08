@@ -1,7 +1,7 @@
-﻿using eRecruiter.Utilities;
-using JetBrains.Annotations;
-using System;
+﻿using System;
 using System.IO;
+using CommandLine;
+using JetBrains.Annotations;
 
 namespace eRecruiter.ApplicantImport
 {
@@ -12,13 +12,17 @@ namespace eRecruiter.ApplicantImport
         {
             requiresExit = false;
             var options = new CommandLineArguments();
-            if (CommandLine.Parser.Default.ParseArguments(commandLineArgs, options))
+            if (Parser.Default.ParseArguments(commandLineArgs, options))
             {
                 // make relative paths absolute
                 if (!Path.IsPathRooted(options.ConfigurationFile))
+                {
                     options.ConfigurationFile = Path.Combine(Environment.CurrentDirectory, options.ConfigurationFile);
+                }
                 if (!Path.IsPathRooted(options.CsvFile))
+                {
                     options.CsvFile = Path.Combine(Environment.CurrentDirectory, options.CsvFile);
+                }
 
                 // check if files exist
                 if (!File.Exists(options.ConfigurationFile))

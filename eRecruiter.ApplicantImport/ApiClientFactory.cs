@@ -11,7 +11,7 @@ namespace eRecruiter.ApplicantImport
         public static ApiHttpClient GetClient(Configuration config)
         {
             var client = new ApiHttpClient(new Uri(config.Api.Endpoint),
-                () => new ApiKeyParameter
+                () => new ApiTokenParameter
                 {
                     ClientInfo = "eRecruiter.ApplicantImport",
                     Key = config.Api.Key,
