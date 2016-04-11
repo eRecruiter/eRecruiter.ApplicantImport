@@ -6,7 +6,7 @@ Import applicant profiles from a CSV file into eRecruiter. You'll need an up-and
 
 This nifty little tool builds automatically on every commit on GitHub using AppVeyor. You can download the latest build here: https://ci.appveyor.com/project/eRecruiter/erecruiter-applicantimport/build/artifacts
 
-[![Build status](https://ci.appveyor.com/api/projects/status/gt1aur3whro8k2w5)](https://ci.appveyor.com/project/eRecruiter/erecruiter-applicantimport)
+[![Build status](https://ci.appveyor.com/api/projects/status/hssrp9mooyw553u5?svg=true)](https://ci.appveyor.com/project/eRecruiter/erecruiter-applicantimport)
 
 ## Usage
 `eRecruiter.ApplicantImport.exe --config=your_config_file.json --file=your_csv_file.csv`
