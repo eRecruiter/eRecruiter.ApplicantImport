@@ -74,6 +74,7 @@
     <Compile Include="Columns\CreationDateColumn.cs" />
     <Compile Include="Columns\BirthdateColumn.cs" />
     <Compile Include="Columns\BeginDateColumn.cs" />
+    <Compile Include="Columns\HistoryColumn.cs" />
     <Compile Include="Columns\IgnoreColumn.cs" />
     <Compile Include="Columns\KnowledgeColumn.cs" />
     <Compile Include="Columns\ClassificationReasonColumn.cs" />
