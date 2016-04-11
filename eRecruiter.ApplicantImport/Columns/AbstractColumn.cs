@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using eRecruiter.Api.Client;
 using eRecruiter.Api.Parameters;
 using eRecruiter.Api.Responses;
 using eRecruiter.Utilities;
 using JetBrains.Annotations;
-using System.Linq;
 
 namespace eRecruiter.ApplicantImport.Columns
 {
@@ -36,11 +36,13 @@ namespace eRecruiter.ApplicantImport.Columns
             return true;
         }
 
-        public virtual void SetValueBeforeCreate([CanBeNull] string value, [NotNull] ApplicantParameter applicant, [NotNull] ApiHttpClient apiClient)
+        public virtual void SetValueBeforeCreate([CanBeNull] string value, [NotNull] ApplicantParameter applicant,
+            [NotNull] ApiHttpClient apiClient)
         {
         }
 
-        public virtual void SetValueAfterCreate([CanBeNull] string value, [NotNull] ApplicantResponse applicant, [NotNull] ApiHttpClient apiClient)
+        public virtual void SetValueAfterCreate([CanBeNull] string value, [NotNull] ApplicantResponse applicant,
+            [NotNull] ApiHttpClient apiClient)
         {
         }
 
@@ -48,7 +50,7 @@ namespace eRecruiter.ApplicantImport.Columns
         {
             if (configuration.Columns.Count(x => x.Type == Type) > 1)
             {
-                Program.WriteWarning("Column for '" + Type + "' specified more than once.");
+                Program.WriteWarning($"Column for '{Type}' specified more than once.");
                 return true;
             }
             return false;
@@ -58,7 +60,7 @@ namespace eRecruiter.ApplicantImport.Columns
         {
             if (configuration.Columns.Count(x => x.Type == Type) <= 0)
             {
-                Program.WriteWarning("Column for '" + Type + "' not specified at all.");
+                Program.WriteWarning($"Column for '{Type}' not specified at all.");
                 return true;
             }
             return false;
@@ -68,7 +70,7 @@ namespace eRecruiter.ApplicantImport.Columns
         {
             if (!value.HasValue())
             {
-                Program.WriteWarning("Empty value in column '" + Header + "' of type '" + Type + "' not allowed.");
+                Program.WriteWarning($"Empty value in column '{Header}' of type '{Type}' not allowed.");
                 return false;
             }
             return true;
@@ -77,13 +79,14 @@ namespace eRecruiter.ApplicantImport.Columns
         protected bool IsValueInList(string value, IEnumerable<string> allowedValues)
         {
             // ReSharper disable PossibleMultipleEnumeration
-            if (!allowedValues.Any(x => x.Is(value)))
+            if (allowedValues.Any(x => x.Is(value)))
             {
-                Program.WriteWarning("'" + value + "' is not a valid value for '" + Header + "'. Allowed values are '" + string.Join(" ", allowedValues) + "'.");
-                return false;
+                return true;
             }
+            Program.WriteWarning(
+                $"'{value}' is not a valid value for '{Header}'. Allowed values are '{string.Join(" ", allowedValues)}'.");
+            return false;
             // ReSharper restore PossibleMultipleEnumeration
-            return true;
         }
     }
 }
