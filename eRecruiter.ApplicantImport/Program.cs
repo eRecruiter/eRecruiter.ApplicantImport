@@ -27,7 +27,7 @@ namespace eRecruiter.ApplicantImport
             Write("Command line arguments seem okay.");
             Write("");
 
-            #endregion
+            #endregion Command Line Arguments
 
             if (commandLineArguments.LogFile.HasValue())
             {
@@ -55,7 +55,7 @@ namespace eRecruiter.ApplicantImport
             }
             Write("");
 
-            #endregion
+            #endregion Configuration File
 
             if (commandLineArguments.GenerateCsvStub)
             {
@@ -83,7 +83,7 @@ namespace eRecruiter.ApplicantImport
             }
             Write("");
 
-            #endregion
+            #endregion CSV file
 
             #region Import
 
@@ -95,7 +95,7 @@ namespace eRecruiter.ApplicantImport
             }
             Write("");
 
-            #endregion
+            #endregion Import
 
             Write("Everything done. Have a nice day.");
             Environment.Exit(0);
