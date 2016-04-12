@@ -44,7 +44,7 @@ namespace eRecruiter.ApplicantImport
             }
             catch (Exception ex)
             {
-                Program.WriteError("Unable to read CSV: " + ex.Message);
+                WriteError($"Unable to read CSV: {ex.Message}");
                 hasErrors = true;
                 return null;
             }
@@ -67,14 +67,14 @@ namespace eRecruiter.ApplicantImport
         {
             if (!csv.Values.Any())
             {
-                Program.WriteWarning("No applicants found.");
+                WriteWarning("No applicants found.");
                 return false;
             }
 
 
             if (csv.Headers.Count() <= 1)
             {
-                Program.WriteWarning("Less than two columns.");
+                WriteWarning("Less than two columns.");
                 return false;
             }
             return true;
@@ -103,8 +103,7 @@ namespace eRecruiter.ApplicantImport
             {
                 if (!csv.Headers.Any(x => x.Is(column.Header)))
                 {
-                    Program.WriteWarning("The column '" + column.Header +
-                                         "' is specified in configuration, but not found in CSV.");
+                    WriteWarning($"The column '{column.Header}' is specified in configuration, but not found in CSV.");
                     result = false;
                 }
             }
@@ -118,12 +117,21 @@ namespace eRecruiter.ApplicantImport
             {
                 if (!_configuration.Columns.Any(x => x.Header.Is(column)))
                 {
-                    Program.WriteWarning("The column '" + column +
-                                         "' is found in CSV, but not specified in configuration.");
+                    WriteWarning($"The column '{column}' is found in CSV, but not specified in configuration.");
                     result = false;
                 }
             }
             return result;
+        }
+
+        private void WriteWarning(string message)
+        {
+            Program.WriteWarning(message);
+        }
+
+        private void WriteError(string message)
+        {
+            Program.WriteError(message);
         }
 
         public static CsvConfiguration GetDefaultCsvConfiguration()

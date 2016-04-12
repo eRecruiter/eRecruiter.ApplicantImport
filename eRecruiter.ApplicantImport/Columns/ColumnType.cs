@@ -32,7 +32,7 @@ namespace eRecruiter.ApplicantImport.Columns
         ImportantInfo,
         Classification,
         ClassificationReason,
-        CustomField
-        /* History - not supported in API yet */
+        CustomField,
+        History
     }
 }

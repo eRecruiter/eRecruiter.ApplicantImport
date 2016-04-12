@@ -14,8 +14,10 @@ namespace eRecruiter.ApplicantImport.Columns
                 var columnTypeName = "eRecruiter.ApplicantImport.Columns." + column.Type + "Column";
                 var columnType = Type.GetType(columnTypeName);
                 if (columnType == null)
+                {
                     throw new ApplicationException("Class '" + columnTypeName + "' not found.");
-                result = (AbstractColumn)Activator.CreateInstance(columnType, column.Header);
+                }
+                result = (AbstractColumn) Activator.CreateInstance(columnType, column.Header);
             }
             catch (Exception ex)
             {
@@ -26,9 +28,13 @@ namespace eRecruiter.ApplicantImport.Columns
             result.DateFormat = "yyyy-MM-dd";
 
             if (column.DateFormat.HasValue())
+            {
                 result.DateFormat = column.DateFormat;
+            }
             if (column.SubType.HasValue())
+            {
                 result.SubType = column.SubType;
+            }
 
             return result;
         }

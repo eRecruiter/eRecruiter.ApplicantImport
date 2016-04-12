@@ -1,6 +1,6 @@
 # eRecruiter.ApplicantImport
 
-Import applicant profiles from a CSV file into eRecruiter. You'll need an up-and-running eRecruiter API endpoint (version >= 1.37) and the respective API key.
+Import applicant profiles from a CSV file into eRecruiter. You'll need an up-and-running eRecruiter API endpoint (eRecruiter version >= 2.5, API version >= 1.17) and the respective API key.
 
 ## Download
 
@@ -51,11 +51,11 @@ Each applicant attribute corresponds to a column in your CSV file. At the moment
 - **Classification:** `Classification`
 - **Classification reason:** `ClassificationReason` - if present, a column for `Classification` must be present as well.
 - **Custom field:** `CustomField` - configuration for `SubType` is required to specify the custom field. Also, configuration for `DateFormat` is supported (if custom field is of type `Date`)
+- **History entry:** `History`
 - **Ignore:** `Ignore` - Specifically configure columns that should be ignored at all.
 
 ## Known problems and shortcomings
-
-- It's not possible to add a history entry to an applicant at the moment.
+- None
 
 ### Configuration file
 For an example JSON configuration file that contains all supported applicant attributes, see [example-configuration.json](example-configuration.json)
