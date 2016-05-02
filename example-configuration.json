@@ -1,8 +1,8 @@
 {
 	Api: {
 		Endpoint: "< your_API_endpoint >",
-		MandatorId: < your_mandator_ID,
-		Key: "< your_API_key"
+		MandatorId: < your_mandator_ID >,
+		Key: "< your_API_key >"
 	},
 	
 	Columns: [
@@ -33,7 +33,7 @@
 		{
 			Header: "Telefon",
 			Type: "Phone"
-		}		,
+		},
 		{
 			Header: "Handy",
 			Type: "MobilePhone"
